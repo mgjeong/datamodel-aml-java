@@ -37,7 +37,7 @@ public interface InternalElement extends CommonElement{
 	 * @param [in] attribute	Attribute list
 	 * @return void
 	 */
-	public void setAttribute(List<Attribute> attribute);	
+	public void setAttribute(List<Attribute> attribute);
 		
 	/**
 	 * @fn List<InternalElement> getInternalElement()

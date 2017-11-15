@@ -1,5 +1,6 @@
 package edge.datamodel.api;
 
+import java.io.File;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.List;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 
 import org.edgexfoundry.domain.core.Event;
 import org.edgexfoundry.domain.core.Reading;
@@ -14,6 +16,7 @@ import org.edgexfoundry.domain.core.Reading;
 import edge.datamodel.aml.model.AMLModel;
 import edge.datamodel.aml.model.AMLObject;
 import edge.datamodel.aml.model.Attribute;
+import edge.datamodel.aml.model.CAEXFile;
 import edge.datamodel.aml.model.InstanceHierarchy;
 import edge.datamodel.aml.model.InternalElement;
 import edge.datamodel.aml.model.RoleClass;
@@ -56,6 +59,17 @@ public class Representation {
 	public AMLModel initialize(String name) {
 		AMLModel model = new AMLModelImpl(name);
 		configureDataModel(model);
+		return model;
+	}
+
+	public AMLModel initialize(String name, String path) {
+		AMLModel model = new AMLModelImpl(name);
+		try {
+			configureDataModel(model, path);
+		} catch (JAXBException e) {
+			System.out.println("Failed Unmarshal");
+			e.printStackTrace();
+		}
 		return model;
 	}
 	
@@ -292,7 +306,19 @@ public class Representation {
 	 * @brief Configurate AutomationML data Model
 	 * @param [in] model AutomationML data model
 	 * @return void
+	 * @throws JAXBException 
 	 */
+	public void configureDataModel(AMLModel model, String path) throws JAXBException {
+		File amlFile = new File(path);
+        JAXBContext jaxbContext = JAXBContext.newInstance(CAEXFileImpl.class);
+        
+        Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+        CAEXFile caexfile = (CAEXFile)jaxbUnmarshaller.unmarshal(amlFile);
+        
+		model.setRoleClassLib(caexfile.getRoleClassLib());
+		model.setSystemUnitClassLib(caexfile.getSystemUnitClassLib());
+	}
+	
 	public void configureDataModel(AMLModel model) {
 		//TODO : Make Configure Module that using XML
 		

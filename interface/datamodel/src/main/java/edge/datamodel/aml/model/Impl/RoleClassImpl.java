@@ -69,9 +69,9 @@ public class RoleClassImpl extends CommonElementImpl implements RoleClass{
 		
 	}
 	
-	public Attribute searchAttribute(String Name) {
+	public Attribute searchAttribute(String name) {
 		for(Attribute att: this.Attribute) {
-			if(Name.contentEquals(att.getName()) == true) {
+			if(name.contentEquals(att.getName()) == true) {
 				return att;
 			}
 		}
