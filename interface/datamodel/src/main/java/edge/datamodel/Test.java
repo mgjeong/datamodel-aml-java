@@ -61,6 +61,17 @@ public class Test {
 		Representation sample_rep = new Representation();
 		AMLModel sample_model = sample_rep.initialize();
 		
+		// Test Unmarshalling
+		AMLModel testmodel = sample_rep.initialize(null, "../../aml-models/data_modeling.aml");
+		
+		String teststring = sample_rep.representAML(testmodel.getRoleClassLib());
+		System.out.println(teststring);
+		
+		teststring = sample_rep.representAML(testmodel.getSystemUnitClassLib());
+		System.out.println(teststring);
+		
+		System.out.println("/////////////////////////////////////////////////////////////");
+		
 		//Make Sample Event
 		List<Reading> readings = new ArrayList<Reading>();
 		Reading test_reading = new Reading("TEMP1", "10");
@@ -105,8 +116,9 @@ public class Test {
 		//Input Value
 		//InstanceHierarchy sample = sample_handler.putData(event, sample_model);
 		AMLObject sample = null;
-		sample = sample_rep.representAMLObject(event, sample_model);
-		Event event2 = sample_rep.representCoredata(sample);
+		sample = sample_rep.representAMLObject(event, testmodel);
+//		sample = sample_rep.representAMLObject(event, sample_model);
+//		Event event2 = sample_rep.representCoredata(sample);
 				
 		//Output Value
 		
@@ -126,6 +138,12 @@ public class Test {
 			System.out.println("\n");
 		}
 		
+
+		
+		
+		
+		
+		
 		
 		
 		// Parsing AML
@@ -139,13 +157,27 @@ public class Test {
 //		System.out.println(xmlString);
 
 		// Parsing AutomationML Format xml file.
+//		CAEXFile testaml = new CAEXFileImpl();
+//		testaml.setInstanceHierarchy(sample.getInstanceHierarchy());
+//		testaml.setRoleClassLib(sample_model.getRoleClassLib());
+//		testaml.setSystemUnitClassLib(sample_model.getSystemUnitClassLib());
+//		
+//		String xmlString = sample_rep.representAML(testaml);
+//		System.out.println(xmlString);
+		
+		
+		// Parsing AutomationML Format xml file using aml file.
+		System.out.println("**************************************************");
 		CAEXFile testaml = new CAEXFileImpl();
 		testaml.setInstanceHierarchy(sample.getInstanceHierarchy());
-		testaml.setRoleClassLib(sample_model.getRoleClassLib());
-		testaml.setSystemUnitClassLib(sample_model.getSystemUnitClassLib());
+		testaml.setRoleClassLib(testmodel.getRoleClassLib());
+		testaml.setSystemUnitClassLib(testmodel.getSystemUnitClassLib());
 		
 		String xmlString = sample_rep.representAML(testaml);
 		System.out.println(xmlString);
+		System.out.println("**************************************************");
+		
+		
 		
 	////////////////////////////////////////////////////////////////////////	
 //		// Parsing EdgeX

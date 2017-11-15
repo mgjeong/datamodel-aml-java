@@ -29,6 +29,7 @@ public class RoleClassLibImpl extends CommonElementImpl implements RoleClassLib{
 	 */
 	public RoleClassLibImpl() {
 		RoleClass = new ArrayList<RoleClass>();
+		this.setVersion("0.0.1");
 	};
 	
 	/**
@@ -40,6 +41,20 @@ public class RoleClassLibImpl extends CommonElementImpl implements RoleClassLib{
 	public RoleClassLibImpl(String name) {
 		RoleClass = new ArrayList<RoleClass>();
 		this.setName(name);
+		this.setVersion("0.0.1");
+	};
+	
+	/**
+	 * @fn RoleClassLibImpl(String name, String version)
+	 * @brief Create new RoleClassLib and set RoleClassLib name and version includes empty RoleClass list
+	 * @param [in] name	RoleClassLib name
+	 * @param [in] version	RoleClassLib version
+	 * 
+	 */
+	public RoleClassLibImpl(String name, String version) {
+		RoleClass = new ArrayList<RoleClass>();
+		this.setName(name);
+		this.setVersion(version);
 	};
 	
 	@Override
@@ -56,6 +71,7 @@ public class RoleClassLibImpl extends CommonElementImpl implements RoleClassLib{
 		this.Description = description;
 	}
 	
+	@XmlElement(name="Version")
 	public String getVersion() {
 		return Version;
 	}

@@ -76,9 +76,9 @@ public class InterfaceClassLibImpl extends CommonElementImpl implements Interfac
 		this.InterfaceClass.add(newIC);
 	}
 
-	public InterfaceClass searchInterfaceClass(String Name) {
+	public InterfaceClass searchInterfaceClass(String name) {
 		for(InterfaceClass ic: this.InterfaceClass) {
-			if(Name.equals(ic.getName()) == true) {
+			if(name.equals(ic.getName()) == true) {
 				return ic;
 			}
 		}

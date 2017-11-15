@@ -30,6 +30,7 @@ public class SystemUnitClassLibImpl extends CommonElementImpl implements SystemU
 	 */
 	public SystemUnitClassLibImpl() {
 		SystemUnitClass = new ArrayList<SystemUnitClass>();
+		this.setVersion("0.0.1");
 	}
 	
 	/**
@@ -38,9 +39,23 @@ public class SystemUnitClassLibImpl extends CommonElementImpl implements SystemU
 	 * @param [in] name	SystemUnitClassLib name
 	 * 
 	 */
-	public SystemUnitClassLibImpl(String Name) {
+	public SystemUnitClassLibImpl(String name) {
 		SystemUnitClass = new ArrayList<SystemUnitClass>();
-		this.setName(Name);
+		this.setName(name);
+		this.setVersion("0.0.1");
+	}
+	
+	/**
+	 * @fn SystemUnitClassLibImpl(String name, String version)
+	 * @brief Create new SystemUnitClassLib and set SystemUnitClassLib name and version includes empty SystemUnitClass list
+	 * @param [in] name	SystemUnitClassLib name
+	 * @param [in] version	SystemUnitClassLib version
+	 * 
+	 */
+	public SystemUnitClassLibImpl(String name, String version) {
+		SystemUnitClass = new ArrayList<SystemUnitClass>();
+		this.setName(name);
+		this.setVersion(version);
 	}
 	
 	@Override
@@ -49,6 +64,7 @@ public class SystemUnitClassLibImpl extends CommonElementImpl implements SystemU
 		return super.getName();
 	}
 	
+	@XmlElement(name="Version")
 	public String getVersion() {
 		return Version;
 	}
@@ -66,20 +82,20 @@ public class SystemUnitClassLibImpl extends CommonElementImpl implements SystemU
 		this.SystemUnitClass = systemUnitClass;
 	}
 	
-	public void addSystemUnitClass(String Name){
-		SystemUnitClass newSUC = new SystemUnitClassImpl(Name);
+	public void addSystemUnitClass(String name){
+		SystemUnitClass newSUC = new SystemUnitClassImpl(name);
 		this.SystemUnitClass.add(newSUC);
 	}
 	
-	public void addSystemUnitClass(String Name, List<Attribute> attribute){
-		SystemUnitClass newSUC = new SystemUnitClassImpl(Name);
+	public void addSystemUnitClass(String name, List<Attribute> attribute){
+		SystemUnitClass newSUC = new SystemUnitClassImpl(name);
 		newSUC.setAttribute(attribute);
 		this.SystemUnitClass.add(newSUC);
 	}
 	
-	public SystemUnitClass searchSystemUnitClass(String Name){
+	public SystemUnitClass searchSystemUnitClass(String name){
 		for(SystemUnitClass suc: this.SystemUnitClass) {
-			if(Name.equals(suc.getName()) == true) {
+			if(name.equals(suc.getName()) == true) {
 				return suc;
 			}
 		}

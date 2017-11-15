@@ -33,6 +33,7 @@ public class InstanceHierarchyImpl extends CommonElementImpl implements Instance
 	 */
 	public InstanceHierarchyImpl(){
 		InternalElement = new ArrayList<InternalElement>();
+		this.setVersion("0.0.1");
 	}
 	
 	/**
@@ -43,6 +44,19 @@ public class InstanceHierarchyImpl extends CommonElementImpl implements Instance
 	public InstanceHierarchyImpl(String name){
 		InternalElement = new ArrayList<InternalElement>();
 		this.setName(name);
+		this.setVersion("0.0.1");
+	}
+	
+	/**
+	 * @fn AttributeImpl(String name, String version)
+	 * @brief Create new InstanceHierarhcy includes empty InternalElement list and set InstanceHierarchy name and version 
+	 * @param [in] name	InstanceHierarchy name
+	 * @param [in] version	InstanceHierarchy version
+	 */
+	public InstanceHierarchyImpl(String name, String version){
+		InternalElement = new ArrayList<InternalElement>();
+		this.setName(name);
+		this.setVersion(version);
 	}
 	
 	@Override
@@ -54,7 +68,8 @@ public class InstanceHierarchyImpl extends CommonElementImpl implements Instance
 	public void setVersion(String version) {
 		this.Version = version;
 	}
-	
+
+	@XmlElement(name="Version")
 	public String getVersion() {
 		return Version;
 	}
