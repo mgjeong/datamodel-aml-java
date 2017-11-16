@@ -3692,49 +3692,62 @@ public final class ProtoAML {
         getRefBaseClassPathBytes();
 
     /**
-     * <code>repeated .datamodel.InternalElement InternalElement = 3;</code>
+     * <code>optional .datamodel.SupportedRoleClass SupportedRoleClass = 3;</code>
+     */
+    boolean hasSupportedRoleClass();
+    /**
+     * <code>optional .datamodel.SupportedRoleClass SupportedRoleClass = 3;</code>
+     */
+    edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass getSupportedRoleClass();
+    /**
+     * <code>optional .datamodel.SupportedRoleClass SupportedRoleClass = 3;</code>
+     */
+    edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClassOrBuilder getSupportedRoleClassOrBuilder();
+
+    /**
+     * <code>repeated .datamodel.InternalElement InternalElement = 4;</code>
      */
     java.util.List<edge.datamodel.protobuf.aml.ProtoAML.InternalElement> 
         getInternalElementList();
     /**
-     * <code>repeated .datamodel.InternalElement InternalElement = 3;</code>
+     * <code>repeated .datamodel.InternalElement InternalElement = 4;</code>
      */
     edge.datamodel.protobuf.aml.ProtoAML.InternalElement getInternalElement(int index);
     /**
-     * <code>repeated .datamodel.InternalElement InternalElement = 3;</code>
+     * <code>repeated .datamodel.InternalElement InternalElement = 4;</code>
      */
     int getInternalElementCount();
     /**
-     * <code>repeated .datamodel.InternalElement InternalElement = 3;</code>
+     * <code>repeated .datamodel.InternalElement InternalElement = 4;</code>
      */
     java.util.List<? extends edge.datamodel.protobuf.aml.ProtoAML.InternalElementOrBuilder> 
         getInternalElementOrBuilderList();
     /**
-     * <code>repeated .datamodel.InternalElement InternalElement = 3;</code>
+     * <code>repeated .datamodel.InternalElement InternalElement = 4;</code>
      */
     edge.datamodel.protobuf.aml.ProtoAML.InternalElementOrBuilder getInternalElementOrBuilder(
         int index);
 
     /**
-     * <code>repeated .datamodel.Attribute Attribute = 4;</code>
+     * <code>repeated .datamodel.Attribute Attribute = 5;</code>
      */
     java.util.List<edge.datamodel.protobuf.aml.ProtoAML.Attribute> 
         getAttributeList();
     /**
-     * <code>repeated .datamodel.Attribute Attribute = 4;</code>
+     * <code>repeated .datamodel.Attribute Attribute = 5;</code>
      */
     edge.datamodel.protobuf.aml.ProtoAML.Attribute getAttribute(int index);
     /**
-     * <code>repeated .datamodel.Attribute Attribute = 4;</code>
+     * <code>repeated .datamodel.Attribute Attribute = 5;</code>
      */
     int getAttributeCount();
     /**
-     * <code>repeated .datamodel.Attribute Attribute = 4;</code>
+     * <code>repeated .datamodel.Attribute Attribute = 5;</code>
      */
     java.util.List<? extends edge.datamodel.protobuf.aml.ProtoAML.AttributeOrBuilder> 
         getAttributeOrBuilderList();
     /**
-     * <code>repeated .datamodel.Attribute Attribute = 4;</code>
+     * <code>repeated .datamodel.Attribute Attribute = 5;</code>
      */
     edge.datamodel.protobuf.aml.ProtoAML.AttributeOrBuilder getAttributeOrBuilder(
         int index);
@@ -3798,18 +3811,31 @@ public final class ProtoAML {
               break;
             }
             case 26: {
-              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+              edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                subBuilder = supportedRoleClass_.toBuilder();
+              }
+              supportedRoleClass_ = input.readMessage(edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(supportedRoleClass_);
+                supportedRoleClass_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000004;
+              break;
+            }
+            case 34: {
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
                 internalElement_ = new java.util.ArrayList<edge.datamodel.protobuf.aml.ProtoAML.InternalElement>();
-                mutable_bitField0_ |= 0x00000004;
+                mutable_bitField0_ |= 0x00000008;
               }
               internalElement_.add(
                   input.readMessage(edge.datamodel.protobuf.aml.ProtoAML.InternalElement.PARSER, extensionRegistry));
               break;
             }
-            case 34: {
-              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+            case 42: {
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
                 attribute_ = new java.util.ArrayList<edge.datamodel.protobuf.aml.ProtoAML.Attribute>();
-                mutable_bitField0_ |= 0x00000008;
+                mutable_bitField0_ |= 0x00000010;
               }
               attribute_.add(
                   input.readMessage(edge.datamodel.protobuf.aml.ProtoAML.Attribute.PARSER, extensionRegistry));
@@ -3823,10 +3849,10 @@ public final class ProtoAML {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
           internalElement_ = java.util.Collections.unmodifiableList(internalElement_);
         }
-        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
           attribute_ = java.util.Collections.unmodifiableList(attribute_);
         }
         this.unknownFields = unknownFields.build();
@@ -3930,70 +3956,91 @@ public final class ProtoAML {
       }
     }
 
-    public static final int INTERNALELEMENT_FIELD_NUMBER = 3;
+    public static final int SUPPORTEDROLECLASS_FIELD_NUMBER = 3;
+    private edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass supportedRoleClass_;
+    /**
+     * <code>optional .datamodel.SupportedRoleClass SupportedRoleClass = 3;</code>
+     */
+    public boolean hasSupportedRoleClass() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional .datamodel.SupportedRoleClass SupportedRoleClass = 3;</code>
+     */
+    public edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass getSupportedRoleClass() {
+      return supportedRoleClass_ == null ? edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass.getDefaultInstance() : supportedRoleClass_;
+    }
+    /**
+     * <code>optional .datamodel.SupportedRoleClass SupportedRoleClass = 3;</code>
+     */
+    public edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClassOrBuilder getSupportedRoleClassOrBuilder() {
+      return supportedRoleClass_ == null ? edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass.getDefaultInstance() : supportedRoleClass_;
+    }
+
+    public static final int INTERNALELEMENT_FIELD_NUMBER = 4;
     private java.util.List<edge.datamodel.protobuf.aml.ProtoAML.InternalElement> internalElement_;
     /**
-     * <code>repeated .datamodel.InternalElement InternalElement = 3;</code>
+     * <code>repeated .datamodel.InternalElement InternalElement = 4;</code>
      */
     public java.util.List<edge.datamodel.protobuf.aml.ProtoAML.InternalElement> getInternalElementList() {
       return internalElement_;
     }
     /**
-     * <code>repeated .datamodel.InternalElement InternalElement = 3;</code>
+     * <code>repeated .datamodel.InternalElement InternalElement = 4;</code>
      */
     public java.util.List<? extends edge.datamodel.protobuf.aml.ProtoAML.InternalElementOrBuilder> 
         getInternalElementOrBuilderList() {
       return internalElement_;
     }
     /**
-     * <code>repeated .datamodel.InternalElement InternalElement = 3;</code>
+     * <code>repeated .datamodel.InternalElement InternalElement = 4;</code>
      */
     public int getInternalElementCount() {
       return internalElement_.size();
     }
     /**
-     * <code>repeated .datamodel.InternalElement InternalElement = 3;</code>
+     * <code>repeated .datamodel.InternalElement InternalElement = 4;</code>
      */
     public edge.datamodel.protobuf.aml.ProtoAML.InternalElement getInternalElement(int index) {
       return internalElement_.get(index);
     }
     /**
-     * <code>repeated .datamodel.InternalElement InternalElement = 3;</code>
+     * <code>repeated .datamodel.InternalElement InternalElement = 4;</code>
      */
     public edge.datamodel.protobuf.aml.ProtoAML.InternalElementOrBuilder getInternalElementOrBuilder(
         int index) {
       return internalElement_.get(index);
     }
 
-    public static final int ATTRIBUTE_FIELD_NUMBER = 4;
+    public static final int ATTRIBUTE_FIELD_NUMBER = 5;
     private java.util.List<edge.datamodel.protobuf.aml.ProtoAML.Attribute> attribute_;
     /**
-     * <code>repeated .datamodel.Attribute Attribute = 4;</code>
+     * <code>repeated .datamodel.Attribute Attribute = 5;</code>
      */
     public java.util.List<edge.datamodel.protobuf.aml.ProtoAML.Attribute> getAttributeList() {
       return attribute_;
     }
     /**
-     * <code>repeated .datamodel.Attribute Attribute = 4;</code>
+     * <code>repeated .datamodel.Attribute Attribute = 5;</code>
      */
     public java.util.List<? extends edge.datamodel.protobuf.aml.ProtoAML.AttributeOrBuilder> 
         getAttributeOrBuilderList() {
       return attribute_;
     }
     /**
-     * <code>repeated .datamodel.Attribute Attribute = 4;</code>
+     * <code>repeated .datamodel.Attribute Attribute = 5;</code>
      */
     public int getAttributeCount() {
       return attribute_.size();
     }
     /**
-     * <code>repeated .datamodel.Attribute Attribute = 4;</code>
+     * <code>repeated .datamodel.Attribute Attribute = 5;</code>
      */
     public edge.datamodel.protobuf.aml.ProtoAML.Attribute getAttribute(int index) {
       return attribute_.get(index);
     }
     /**
-     * <code>repeated .datamodel.Attribute Attribute = 4;</code>
+     * <code>repeated .datamodel.Attribute Attribute = 5;</code>
      */
     public edge.datamodel.protobuf.aml.ProtoAML.AttributeOrBuilder getAttributeOrBuilder(
         int index) {
@@ -4009,6 +4056,12 @@ public final class ProtoAML {
       if (!hasName()) {
         memoizedIsInitialized = 0;
         return false;
+      }
+      if (hasSupportedRoleClass()) {
+        if (!getSupportedRoleClass().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
       }
       for (int i = 0; i < getInternalElementCount(); i++) {
         if (!getInternalElement(i).isInitialized()) {
@@ -4034,11 +4087,14 @@ public final class ProtoAML {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, refBaseClassPath_);
       }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeMessage(3, getSupportedRoleClass());
+      }
       for (int i = 0; i < internalElement_.size(); i++) {
-        output.writeMessage(3, internalElement_.get(i));
+        output.writeMessage(4, internalElement_.get(i));
       }
       for (int i = 0; i < attribute_.size(); i++) {
-        output.writeMessage(4, attribute_.get(i));
+        output.writeMessage(5, attribute_.get(i));
       }
       unknownFields.writeTo(output);
     }
@@ -4054,13 +4110,17 @@ public final class ProtoAML {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, refBaseClassPath_);
       }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getSupportedRoleClass());
+      }
       for (int i = 0; i < internalElement_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, internalElement_.get(i));
+          .computeMessageSize(4, internalElement_.get(i));
       }
       for (int i = 0; i < attribute_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, attribute_.get(i));
+          .computeMessageSize(5, attribute_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4089,6 +4149,11 @@ public final class ProtoAML {
         result = result && getRefBaseClassPath()
             .equals(other.getRefBaseClassPath());
       }
+      result = result && (hasSupportedRoleClass() == other.hasSupportedRoleClass());
+      if (hasSupportedRoleClass()) {
+        result = result && getSupportedRoleClass()
+            .equals(other.getSupportedRoleClass());
+      }
       result = result && getInternalElementList()
           .equals(other.getInternalElementList());
       result = result && getAttributeList()
@@ -4111,6 +4176,10 @@ public final class ProtoAML {
       if (hasRefBaseClassPath()) {
         hash = (37 * hash) + REFBASECLASSPATH_FIELD_NUMBER;
         hash = (53 * hash) + getRefBaseClassPath().hashCode();
+      }
+      if (hasSupportedRoleClass()) {
+        hash = (37 * hash) + SUPPORTEDROLECLASS_FIELD_NUMBER;
+        hash = (53 * hash) + getSupportedRoleClass().hashCode();
       }
       if (getInternalElementCount() > 0) {
         hash = (37 * hash) + INTERNALELEMENT_FIELD_NUMBER;
@@ -4245,6 +4314,7 @@ public final class ProtoAML {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
+          getSupportedRoleClassFieldBuilder();
           getInternalElementFieldBuilder();
           getAttributeFieldBuilder();
         }
@@ -4255,15 +4325,21 @@ public final class ProtoAML {
         bitField0_ = (bitField0_ & ~0x00000001);
         refBaseClassPath_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
+        if (supportedRoleClassBuilder_ == null) {
+          supportedRoleClass_ = null;
+        } else {
+          supportedRoleClassBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
         if (internalElementBuilder_ == null) {
           internalElement_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000008);
         } else {
           internalElementBuilder_.clear();
         }
         if (attributeBuilder_ == null) {
           attribute_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000010);
         } else {
           attributeBuilder_.clear();
         }
@@ -4299,19 +4375,27 @@ public final class ProtoAML {
           to_bitField0_ |= 0x00000002;
         }
         result.refBaseClassPath_ = refBaseClassPath_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        if (supportedRoleClassBuilder_ == null) {
+          result.supportedRoleClass_ = supportedRoleClass_;
+        } else {
+          result.supportedRoleClass_ = supportedRoleClassBuilder_.build();
+        }
         if (internalElementBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+          if (((bitField0_ & 0x00000008) == 0x00000008)) {
             internalElement_ = java.util.Collections.unmodifiableList(internalElement_);
-            bitField0_ = (bitField0_ & ~0x00000004);
+            bitField0_ = (bitField0_ & ~0x00000008);
           }
           result.internalElement_ = internalElement_;
         } else {
           result.internalElement_ = internalElementBuilder_.build();
         }
         if (attributeBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          if (((bitField0_ & 0x00000010) == 0x00000010)) {
             attribute_ = java.util.Collections.unmodifiableList(attribute_);
-            bitField0_ = (bitField0_ & ~0x00000008);
+            bitField0_ = (bitField0_ & ~0x00000010);
           }
           result.attribute_ = attribute_;
         } else {
@@ -4369,11 +4453,14 @@ public final class ProtoAML {
           refBaseClassPath_ = other.refBaseClassPath_;
           onChanged();
         }
+        if (other.hasSupportedRoleClass()) {
+          mergeSupportedRoleClass(other.getSupportedRoleClass());
+        }
         if (internalElementBuilder_ == null) {
           if (!other.internalElement_.isEmpty()) {
             if (internalElement_.isEmpty()) {
               internalElement_ = other.internalElement_;
-              bitField0_ = (bitField0_ & ~0x00000004);
+              bitField0_ = (bitField0_ & ~0x00000008);
             } else {
               ensureInternalElementIsMutable();
               internalElement_.addAll(other.internalElement_);
@@ -4386,7 +4473,7 @@ public final class ProtoAML {
               internalElementBuilder_.dispose();
               internalElementBuilder_ = null;
               internalElement_ = other.internalElement_;
-              bitField0_ = (bitField0_ & ~0x00000004);
+              bitField0_ = (bitField0_ & ~0x00000008);
               internalElementBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getInternalElementFieldBuilder() : null;
@@ -4399,7 +4486,7 @@ public final class ProtoAML {
           if (!other.attribute_.isEmpty()) {
             if (attribute_.isEmpty()) {
               attribute_ = other.attribute_;
-              bitField0_ = (bitField0_ & ~0x00000008);
+              bitField0_ = (bitField0_ & ~0x00000010);
             } else {
               ensureAttributeIsMutable();
               attribute_.addAll(other.attribute_);
@@ -4412,7 +4499,7 @@ public final class ProtoAML {
               attributeBuilder_.dispose();
               attributeBuilder_ = null;
               attribute_ = other.attribute_;
-              bitField0_ = (bitField0_ & ~0x00000008);
+              bitField0_ = (bitField0_ & ~0x00000010);
               attributeBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getAttributeFieldBuilder() : null;
@@ -4429,6 +4516,11 @@ public final class ProtoAML {
       public final boolean isInitialized() {
         if (!hasName()) {
           return false;
+        }
+        if (hasSupportedRoleClass()) {
+          if (!getSupportedRoleClass().isInitialized()) {
+            return false;
+          }
         }
         for (int i = 0; i < getInternalElementCount(); i++) {
           if (!getInternalElement(i).isInitialized()) {
@@ -4614,12 +4706,130 @@ public final class ProtoAML {
         return this;
       }
 
+      private edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass supportedRoleClass_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass, edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass.Builder, edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClassOrBuilder> supportedRoleClassBuilder_;
+      /**
+       * <code>optional .datamodel.SupportedRoleClass SupportedRoleClass = 3;</code>
+       */
+      public boolean hasSupportedRoleClass() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional .datamodel.SupportedRoleClass SupportedRoleClass = 3;</code>
+       */
+      public edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass getSupportedRoleClass() {
+        if (supportedRoleClassBuilder_ == null) {
+          return supportedRoleClass_ == null ? edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass.getDefaultInstance() : supportedRoleClass_;
+        } else {
+          return supportedRoleClassBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .datamodel.SupportedRoleClass SupportedRoleClass = 3;</code>
+       */
+      public Builder setSupportedRoleClass(edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass value) {
+        if (supportedRoleClassBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          supportedRoleClass_ = value;
+          onChanged();
+        } else {
+          supportedRoleClassBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>optional .datamodel.SupportedRoleClass SupportedRoleClass = 3;</code>
+       */
+      public Builder setSupportedRoleClass(
+          edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass.Builder builderForValue) {
+        if (supportedRoleClassBuilder_ == null) {
+          supportedRoleClass_ = builderForValue.build();
+          onChanged();
+        } else {
+          supportedRoleClassBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>optional .datamodel.SupportedRoleClass SupportedRoleClass = 3;</code>
+       */
+      public Builder mergeSupportedRoleClass(edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass value) {
+        if (supportedRoleClassBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004) &&
+              supportedRoleClass_ != null &&
+              supportedRoleClass_ != edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass.getDefaultInstance()) {
+            supportedRoleClass_ =
+              edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass.newBuilder(supportedRoleClass_).mergeFrom(value).buildPartial();
+          } else {
+            supportedRoleClass_ = value;
+          }
+          onChanged();
+        } else {
+          supportedRoleClassBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>optional .datamodel.SupportedRoleClass SupportedRoleClass = 3;</code>
+       */
+      public Builder clearSupportedRoleClass() {
+        if (supportedRoleClassBuilder_ == null) {
+          supportedRoleClass_ = null;
+          onChanged();
+        } else {
+          supportedRoleClassBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+      /**
+       * <code>optional .datamodel.SupportedRoleClass SupportedRoleClass = 3;</code>
+       */
+      public edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass.Builder getSupportedRoleClassBuilder() {
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return getSupportedRoleClassFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .datamodel.SupportedRoleClass SupportedRoleClass = 3;</code>
+       */
+      public edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClassOrBuilder getSupportedRoleClassOrBuilder() {
+        if (supportedRoleClassBuilder_ != null) {
+          return supportedRoleClassBuilder_.getMessageOrBuilder();
+        } else {
+          return supportedRoleClass_ == null ?
+              edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass.getDefaultInstance() : supportedRoleClass_;
+        }
+      }
+      /**
+       * <code>optional .datamodel.SupportedRoleClass SupportedRoleClass = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass, edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass.Builder, edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClassOrBuilder> 
+          getSupportedRoleClassFieldBuilder() {
+        if (supportedRoleClassBuilder_ == null) {
+          supportedRoleClassBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass, edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass.Builder, edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClassOrBuilder>(
+                  getSupportedRoleClass(),
+                  getParentForChildren(),
+                  isClean());
+          supportedRoleClass_ = null;
+        }
+        return supportedRoleClassBuilder_;
+      }
+
       private java.util.List<edge.datamodel.protobuf.aml.ProtoAML.InternalElement> internalElement_ =
         java.util.Collections.emptyList();
       private void ensureInternalElementIsMutable() {
-        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
           internalElement_ = new java.util.ArrayList<edge.datamodel.protobuf.aml.ProtoAML.InternalElement>(internalElement_);
-          bitField0_ |= 0x00000004;
+          bitField0_ |= 0x00000008;
          }
       }
 
@@ -4627,7 +4837,7 @@ public final class ProtoAML {
           edge.datamodel.protobuf.aml.ProtoAML.InternalElement, edge.datamodel.protobuf.aml.ProtoAML.InternalElement.Builder, edge.datamodel.protobuf.aml.ProtoAML.InternalElementOrBuilder> internalElementBuilder_;
 
       /**
-       * <code>repeated .datamodel.InternalElement InternalElement = 3;</code>
+       * <code>repeated .datamodel.InternalElement InternalElement = 4;</code>
        */
       public java.util.List<edge.datamodel.protobuf.aml.ProtoAML.InternalElement> getInternalElementList() {
         if (internalElementBuilder_ == null) {
@@ -4637,7 +4847,7 @@ public final class ProtoAML {
         }
       }
       /**
-       * <code>repeated .datamodel.InternalElement InternalElement = 3;</code>
+       * <code>repeated .datamodel.InternalElement InternalElement = 4;</code>
        */
       public int getInternalElementCount() {
         if (internalElementBuilder_ == null) {
@@ -4647,7 +4857,7 @@ public final class ProtoAML {
         }
       }
       /**
-       * <code>repeated .datamodel.InternalElement InternalElement = 3;</code>
+       * <code>repeated .datamodel.InternalElement InternalElement = 4;</code>
        */
       public edge.datamodel.protobuf.aml.ProtoAML.InternalElement getInternalElement(int index) {
         if (internalElementBuilder_ == null) {
@@ -4657,7 +4867,7 @@ public final class ProtoAML {
         }
       }
       /**
-       * <code>repeated .datamodel.InternalElement InternalElement = 3;</code>
+       * <code>repeated .datamodel.InternalElement InternalElement = 4;</code>
        */
       public Builder setInternalElement(
           int index, edge.datamodel.protobuf.aml.ProtoAML.InternalElement value) {
@@ -4674,7 +4884,7 @@ public final class ProtoAML {
         return this;
       }
       /**
-       * <code>repeated .datamodel.InternalElement InternalElement = 3;</code>
+       * <code>repeated .datamodel.InternalElement InternalElement = 4;</code>
        */
       public Builder setInternalElement(
           int index, edge.datamodel.protobuf.aml.ProtoAML.InternalElement.Builder builderForValue) {
@@ -4688,7 +4898,7 @@ public final class ProtoAML {
         return this;
       }
       /**
-       * <code>repeated .datamodel.InternalElement InternalElement = 3;</code>
+       * <code>repeated .datamodel.InternalElement InternalElement = 4;</code>
        */
       public Builder addInternalElement(edge.datamodel.protobuf.aml.ProtoAML.InternalElement value) {
         if (internalElementBuilder_ == null) {
@@ -4704,7 +4914,7 @@ public final class ProtoAML {
         return this;
       }
       /**
-       * <code>repeated .datamodel.InternalElement InternalElement = 3;</code>
+       * <code>repeated .datamodel.InternalElement InternalElement = 4;</code>
        */
       public Builder addInternalElement(
           int index, edge.datamodel.protobuf.aml.ProtoAML.InternalElement value) {
@@ -4721,7 +4931,7 @@ public final class ProtoAML {
         return this;
       }
       /**
-       * <code>repeated .datamodel.InternalElement InternalElement = 3;</code>
+       * <code>repeated .datamodel.InternalElement InternalElement = 4;</code>
        */
       public Builder addInternalElement(
           edge.datamodel.protobuf.aml.ProtoAML.InternalElement.Builder builderForValue) {
@@ -4735,7 +4945,7 @@ public final class ProtoAML {
         return this;
       }
       /**
-       * <code>repeated .datamodel.InternalElement InternalElement = 3;</code>
+       * <code>repeated .datamodel.InternalElement InternalElement = 4;</code>
        */
       public Builder addInternalElement(
           int index, edge.datamodel.protobuf.aml.ProtoAML.InternalElement.Builder builderForValue) {
@@ -4749,7 +4959,7 @@ public final class ProtoAML {
         return this;
       }
       /**
-       * <code>repeated .datamodel.InternalElement InternalElement = 3;</code>
+       * <code>repeated .datamodel.InternalElement InternalElement = 4;</code>
        */
       public Builder addAllInternalElement(
           java.lang.Iterable<? extends edge.datamodel.protobuf.aml.ProtoAML.InternalElement> values) {
@@ -4764,12 +4974,12 @@ public final class ProtoAML {
         return this;
       }
       /**
-       * <code>repeated .datamodel.InternalElement InternalElement = 3;</code>
+       * <code>repeated .datamodel.InternalElement InternalElement = 4;</code>
        */
       public Builder clearInternalElement() {
         if (internalElementBuilder_ == null) {
           internalElement_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000008);
           onChanged();
         } else {
           internalElementBuilder_.clear();
@@ -4777,7 +4987,7 @@ public final class ProtoAML {
         return this;
       }
       /**
-       * <code>repeated .datamodel.InternalElement InternalElement = 3;</code>
+       * <code>repeated .datamodel.InternalElement InternalElement = 4;</code>
        */
       public Builder removeInternalElement(int index) {
         if (internalElementBuilder_ == null) {
@@ -4790,14 +5000,14 @@ public final class ProtoAML {
         return this;
       }
       /**
-       * <code>repeated .datamodel.InternalElement InternalElement = 3;</code>
+       * <code>repeated .datamodel.InternalElement InternalElement = 4;</code>
        */
       public edge.datamodel.protobuf.aml.ProtoAML.InternalElement.Builder getInternalElementBuilder(
           int index) {
         return getInternalElementFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .datamodel.InternalElement InternalElement = 3;</code>
+       * <code>repeated .datamodel.InternalElement InternalElement = 4;</code>
        */
       public edge.datamodel.protobuf.aml.ProtoAML.InternalElementOrBuilder getInternalElementOrBuilder(
           int index) {
@@ -4807,7 +5017,7 @@ public final class ProtoAML {
         }
       }
       /**
-       * <code>repeated .datamodel.InternalElement InternalElement = 3;</code>
+       * <code>repeated .datamodel.InternalElement InternalElement = 4;</code>
        */
       public java.util.List<? extends edge.datamodel.protobuf.aml.ProtoAML.InternalElementOrBuilder> 
            getInternalElementOrBuilderList() {
@@ -4818,14 +5028,14 @@ public final class ProtoAML {
         }
       }
       /**
-       * <code>repeated .datamodel.InternalElement InternalElement = 3;</code>
+       * <code>repeated .datamodel.InternalElement InternalElement = 4;</code>
        */
       public edge.datamodel.protobuf.aml.ProtoAML.InternalElement.Builder addInternalElementBuilder() {
         return getInternalElementFieldBuilder().addBuilder(
             edge.datamodel.protobuf.aml.ProtoAML.InternalElement.getDefaultInstance());
       }
       /**
-       * <code>repeated .datamodel.InternalElement InternalElement = 3;</code>
+       * <code>repeated .datamodel.InternalElement InternalElement = 4;</code>
        */
       public edge.datamodel.protobuf.aml.ProtoAML.InternalElement.Builder addInternalElementBuilder(
           int index) {
@@ -4833,7 +5043,7 @@ public final class ProtoAML {
             index, edge.datamodel.protobuf.aml.ProtoAML.InternalElement.getDefaultInstance());
       }
       /**
-       * <code>repeated .datamodel.InternalElement InternalElement = 3;</code>
+       * <code>repeated .datamodel.InternalElement InternalElement = 4;</code>
        */
       public java.util.List<edge.datamodel.protobuf.aml.ProtoAML.InternalElement.Builder> 
            getInternalElementBuilderList() {
@@ -4846,7 +5056,7 @@ public final class ProtoAML {
           internalElementBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               edge.datamodel.protobuf.aml.ProtoAML.InternalElement, edge.datamodel.protobuf.aml.ProtoAML.InternalElement.Builder, edge.datamodel.protobuf.aml.ProtoAML.InternalElementOrBuilder>(
                   internalElement_,
-                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  ((bitField0_ & 0x00000008) == 0x00000008),
                   getParentForChildren(),
                   isClean());
           internalElement_ = null;
@@ -4857,9 +5067,9 @@ public final class ProtoAML {
       private java.util.List<edge.datamodel.protobuf.aml.ProtoAML.Attribute> attribute_ =
         java.util.Collections.emptyList();
       private void ensureAttributeIsMutable() {
-        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
           attribute_ = new java.util.ArrayList<edge.datamodel.protobuf.aml.ProtoAML.Attribute>(attribute_);
-          bitField0_ |= 0x00000008;
+          bitField0_ |= 0x00000010;
          }
       }
 
@@ -4867,7 +5077,7 @@ public final class ProtoAML {
           edge.datamodel.protobuf.aml.ProtoAML.Attribute, edge.datamodel.protobuf.aml.ProtoAML.Attribute.Builder, edge.datamodel.protobuf.aml.ProtoAML.AttributeOrBuilder> attributeBuilder_;
 
       /**
-       * <code>repeated .datamodel.Attribute Attribute = 4;</code>
+       * <code>repeated .datamodel.Attribute Attribute = 5;</code>
        */
       public java.util.List<edge.datamodel.protobuf.aml.ProtoAML.Attribute> getAttributeList() {
         if (attributeBuilder_ == null) {
@@ -4877,7 +5087,7 @@ public final class ProtoAML {
         }
       }
       /**
-       * <code>repeated .datamodel.Attribute Attribute = 4;</code>
+       * <code>repeated .datamodel.Attribute Attribute = 5;</code>
        */
       public int getAttributeCount() {
         if (attributeBuilder_ == null) {
@@ -4887,7 +5097,7 @@ public final class ProtoAML {
         }
       }
       /**
-       * <code>repeated .datamodel.Attribute Attribute = 4;</code>
+       * <code>repeated .datamodel.Attribute Attribute = 5;</code>
        */
       public edge.datamodel.protobuf.aml.ProtoAML.Attribute getAttribute(int index) {
         if (attributeBuilder_ == null) {
@@ -4897,7 +5107,7 @@ public final class ProtoAML {
         }
       }
       /**
-       * <code>repeated .datamodel.Attribute Attribute = 4;</code>
+       * <code>repeated .datamodel.Attribute Attribute = 5;</code>
        */
       public Builder setAttribute(
           int index, edge.datamodel.protobuf.aml.ProtoAML.Attribute value) {
@@ -4914,7 +5124,7 @@ public final class ProtoAML {
         return this;
       }
       /**
-       * <code>repeated .datamodel.Attribute Attribute = 4;</code>
+       * <code>repeated .datamodel.Attribute Attribute = 5;</code>
        */
       public Builder setAttribute(
           int index, edge.datamodel.protobuf.aml.ProtoAML.Attribute.Builder builderForValue) {
@@ -4928,7 +5138,7 @@ public final class ProtoAML {
         return this;
       }
       /**
-       * <code>repeated .datamodel.Attribute Attribute = 4;</code>
+       * <code>repeated .datamodel.Attribute Attribute = 5;</code>
        */
       public Builder addAttribute(edge.datamodel.protobuf.aml.ProtoAML.Attribute value) {
         if (attributeBuilder_ == null) {
@@ -4944,7 +5154,7 @@ public final class ProtoAML {
         return this;
       }
       /**
-       * <code>repeated .datamodel.Attribute Attribute = 4;</code>
+       * <code>repeated .datamodel.Attribute Attribute = 5;</code>
        */
       public Builder addAttribute(
           int index, edge.datamodel.protobuf.aml.ProtoAML.Attribute value) {
@@ -4961,7 +5171,7 @@ public final class ProtoAML {
         return this;
       }
       /**
-       * <code>repeated .datamodel.Attribute Attribute = 4;</code>
+       * <code>repeated .datamodel.Attribute Attribute = 5;</code>
        */
       public Builder addAttribute(
           edge.datamodel.protobuf.aml.ProtoAML.Attribute.Builder builderForValue) {
@@ -4975,7 +5185,7 @@ public final class ProtoAML {
         return this;
       }
       /**
-       * <code>repeated .datamodel.Attribute Attribute = 4;</code>
+       * <code>repeated .datamodel.Attribute Attribute = 5;</code>
        */
       public Builder addAttribute(
           int index, edge.datamodel.protobuf.aml.ProtoAML.Attribute.Builder builderForValue) {
@@ -4989,7 +5199,7 @@ public final class ProtoAML {
         return this;
       }
       /**
-       * <code>repeated .datamodel.Attribute Attribute = 4;</code>
+       * <code>repeated .datamodel.Attribute Attribute = 5;</code>
        */
       public Builder addAllAttribute(
           java.lang.Iterable<? extends edge.datamodel.protobuf.aml.ProtoAML.Attribute> values) {
@@ -5004,12 +5214,12 @@ public final class ProtoAML {
         return this;
       }
       /**
-       * <code>repeated .datamodel.Attribute Attribute = 4;</code>
+       * <code>repeated .datamodel.Attribute Attribute = 5;</code>
        */
       public Builder clearAttribute() {
         if (attributeBuilder_ == null) {
           attribute_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000010);
           onChanged();
         } else {
           attributeBuilder_.clear();
@@ -5017,7 +5227,7 @@ public final class ProtoAML {
         return this;
       }
       /**
-       * <code>repeated .datamodel.Attribute Attribute = 4;</code>
+       * <code>repeated .datamodel.Attribute Attribute = 5;</code>
        */
       public Builder removeAttribute(int index) {
         if (attributeBuilder_ == null) {
@@ -5030,14 +5240,14 @@ public final class ProtoAML {
         return this;
       }
       /**
-       * <code>repeated .datamodel.Attribute Attribute = 4;</code>
+       * <code>repeated .datamodel.Attribute Attribute = 5;</code>
        */
       public edge.datamodel.protobuf.aml.ProtoAML.Attribute.Builder getAttributeBuilder(
           int index) {
         return getAttributeFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .datamodel.Attribute Attribute = 4;</code>
+       * <code>repeated .datamodel.Attribute Attribute = 5;</code>
        */
       public edge.datamodel.protobuf.aml.ProtoAML.AttributeOrBuilder getAttributeOrBuilder(
           int index) {
@@ -5047,7 +5257,7 @@ public final class ProtoAML {
         }
       }
       /**
-       * <code>repeated .datamodel.Attribute Attribute = 4;</code>
+       * <code>repeated .datamodel.Attribute Attribute = 5;</code>
        */
       public java.util.List<? extends edge.datamodel.protobuf.aml.ProtoAML.AttributeOrBuilder> 
            getAttributeOrBuilderList() {
@@ -5058,14 +5268,14 @@ public final class ProtoAML {
         }
       }
       /**
-       * <code>repeated .datamodel.Attribute Attribute = 4;</code>
+       * <code>repeated .datamodel.Attribute Attribute = 5;</code>
        */
       public edge.datamodel.protobuf.aml.ProtoAML.Attribute.Builder addAttributeBuilder() {
         return getAttributeFieldBuilder().addBuilder(
             edge.datamodel.protobuf.aml.ProtoAML.Attribute.getDefaultInstance());
       }
       /**
-       * <code>repeated .datamodel.Attribute Attribute = 4;</code>
+       * <code>repeated .datamodel.Attribute Attribute = 5;</code>
        */
       public edge.datamodel.protobuf.aml.ProtoAML.Attribute.Builder addAttributeBuilder(
           int index) {
@@ -5073,7 +5283,7 @@ public final class ProtoAML {
             index, edge.datamodel.protobuf.aml.ProtoAML.Attribute.getDefaultInstance());
       }
       /**
-       * <code>repeated .datamodel.Attribute Attribute = 4;</code>
+       * <code>repeated .datamodel.Attribute Attribute = 5;</code>
        */
       public java.util.List<edge.datamodel.protobuf.aml.ProtoAML.Attribute.Builder> 
            getAttributeBuilderList() {
@@ -5086,7 +5296,7 @@ public final class ProtoAML {
           attributeBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               edge.datamodel.protobuf.aml.ProtoAML.Attribute, edge.datamodel.protobuf.aml.ProtoAML.Attribute.Builder, edge.datamodel.protobuf.aml.ProtoAML.AttributeOrBuilder>(
                   attribute_,
-                  ((bitField0_ & 0x00000008) == 0x00000008),
+                  ((bitField0_ & 0x00000010) == 0x00000010),
                   getParentForChildren(),
                   isClean());
           attribute_ = null;
@@ -6280,17 +6490,17 @@ public final class ProtoAML {
         getRefBaseSystemUnitPathBytes();
 
     /**
-     * <code>optional .datamodel.RoleRequirements RoleRequirements = 3;</code>
+     * <code>optional .datamodel.SupportedRoleClass SupportedRoleClass = 3;</code>
      */
-    boolean hasRoleRequirements();
+    boolean hasSupportedRoleClass();
     /**
-     * <code>optional .datamodel.RoleRequirements RoleRequirements = 3;</code>
+     * <code>optional .datamodel.SupportedRoleClass SupportedRoleClass = 3;</code>
      */
-    edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements getRoleRequirements();
+    edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass getSupportedRoleClass();
     /**
-     * <code>optional .datamodel.RoleRequirements RoleRequirements = 3;</code>
+     * <code>optional .datamodel.SupportedRoleClass SupportedRoleClass = 3;</code>
      */
-    edge.datamodel.protobuf.aml.ProtoAML.RoleRequirementsOrBuilder getRoleRequirementsOrBuilder();
+    edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClassOrBuilder getSupportedRoleClassOrBuilder();
 
     /**
      * <code>repeated .datamodel.InternalElement InternalElement = 4;</code>
@@ -6399,14 +6609,14 @@ public final class ProtoAML {
               break;
             }
             case 26: {
-              edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements.Builder subBuilder = null;
+              edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass.Builder subBuilder = null;
               if (((bitField0_ & 0x00000004) == 0x00000004)) {
-                subBuilder = roleRequirements_.toBuilder();
+                subBuilder = supportedRoleClass_.toBuilder();
               }
-              roleRequirements_ = input.readMessage(edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements.PARSER, extensionRegistry);
+              supportedRoleClass_ = input.readMessage(edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(roleRequirements_);
-                roleRequirements_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(supportedRoleClass_);
+                supportedRoleClass_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000004;
               break;
@@ -6544,25 +6754,25 @@ public final class ProtoAML {
       }
     }
 
-    public static final int ROLEREQUIREMENTS_FIELD_NUMBER = 3;
-    private edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements roleRequirements_;
+    public static final int SUPPORTEDROLECLASS_FIELD_NUMBER = 3;
+    private edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass supportedRoleClass_;
     /**
-     * <code>optional .datamodel.RoleRequirements RoleRequirements = 3;</code>
+     * <code>optional .datamodel.SupportedRoleClass SupportedRoleClass = 3;</code>
      */
-    public boolean hasRoleRequirements() {
+    public boolean hasSupportedRoleClass() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional .datamodel.RoleRequirements RoleRequirements = 3;</code>
+     * <code>optional .datamodel.SupportedRoleClass SupportedRoleClass = 3;</code>
      */
-    public edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements getRoleRequirements() {
-      return roleRequirements_ == null ? edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements.getDefaultInstance() : roleRequirements_;
+    public edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass getSupportedRoleClass() {
+      return supportedRoleClass_ == null ? edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass.getDefaultInstance() : supportedRoleClass_;
     }
     /**
-     * <code>optional .datamodel.RoleRequirements RoleRequirements = 3;</code>
+     * <code>optional .datamodel.SupportedRoleClass SupportedRoleClass = 3;</code>
      */
-    public edge.datamodel.protobuf.aml.ProtoAML.RoleRequirementsOrBuilder getRoleRequirementsOrBuilder() {
-      return roleRequirements_ == null ? edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements.getDefaultInstance() : roleRequirements_;
+    public edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClassOrBuilder getSupportedRoleClassOrBuilder() {
+      return supportedRoleClass_ == null ? edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass.getDefaultInstance() : supportedRoleClass_;
     }
 
     public static final int INTERNALELEMENT_FIELD_NUMBER = 4;
@@ -6645,8 +6855,8 @@ public final class ProtoAML {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (hasRoleRequirements()) {
-        if (!getRoleRequirements().isInitialized()) {
+      if (hasSupportedRoleClass()) {
+        if (!getSupportedRoleClass().isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -6676,7 +6886,7 @@ public final class ProtoAML {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, refBaseSystemUnitPath_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeMessage(3, getRoleRequirements());
+        output.writeMessage(3, getSupportedRoleClass());
       }
       for (int i = 0; i < internalElement_.size(); i++) {
         output.writeMessage(4, internalElement_.get(i));
@@ -6700,7 +6910,7 @@ public final class ProtoAML {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getRoleRequirements());
+          .computeMessageSize(3, getSupportedRoleClass());
       }
       for (int i = 0; i < internalElement_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -6737,10 +6947,10 @@ public final class ProtoAML {
         result = result && getRefBaseSystemUnitPath()
             .equals(other.getRefBaseSystemUnitPath());
       }
-      result = result && (hasRoleRequirements() == other.hasRoleRequirements());
-      if (hasRoleRequirements()) {
-        result = result && getRoleRequirements()
-            .equals(other.getRoleRequirements());
+      result = result && (hasSupportedRoleClass() == other.hasSupportedRoleClass());
+      if (hasSupportedRoleClass()) {
+        result = result && getSupportedRoleClass()
+            .equals(other.getSupportedRoleClass());
       }
       result = result && getInternalElementList()
           .equals(other.getInternalElementList());
@@ -6765,9 +6975,9 @@ public final class ProtoAML {
         hash = (37 * hash) + REFBASESYSTEMUNITPATH_FIELD_NUMBER;
         hash = (53 * hash) + getRefBaseSystemUnitPath().hashCode();
       }
-      if (hasRoleRequirements()) {
-        hash = (37 * hash) + ROLEREQUIREMENTS_FIELD_NUMBER;
-        hash = (53 * hash) + getRoleRequirements().hashCode();
+      if (hasSupportedRoleClass()) {
+        hash = (37 * hash) + SUPPORTEDROLECLASS_FIELD_NUMBER;
+        hash = (53 * hash) + getSupportedRoleClass().hashCode();
       }
       if (getInternalElementCount() > 0) {
         hash = (37 * hash) + INTERNALELEMENT_FIELD_NUMBER;
@@ -6902,7 +7112,7 @@ public final class ProtoAML {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getRoleRequirementsFieldBuilder();
+          getSupportedRoleClassFieldBuilder();
           getInternalElementFieldBuilder();
           getAttributeFieldBuilder();
         }
@@ -6913,10 +7123,10 @@ public final class ProtoAML {
         bitField0_ = (bitField0_ & ~0x00000001);
         refBaseSystemUnitPath_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
-        if (roleRequirementsBuilder_ == null) {
-          roleRequirements_ = null;
+        if (supportedRoleClassBuilder_ == null) {
+          supportedRoleClass_ = null;
         } else {
-          roleRequirementsBuilder_.clear();
+          supportedRoleClassBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000004);
         if (internalElementBuilder_ == null) {
@@ -6966,10 +7176,10 @@ public final class ProtoAML {
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        if (roleRequirementsBuilder_ == null) {
-          result.roleRequirements_ = roleRequirements_;
+        if (supportedRoleClassBuilder_ == null) {
+          result.supportedRoleClass_ = supportedRoleClass_;
         } else {
-          result.roleRequirements_ = roleRequirementsBuilder_.build();
+          result.supportedRoleClass_ = supportedRoleClassBuilder_.build();
         }
         if (internalElementBuilder_ == null) {
           if (((bitField0_ & 0x00000008) == 0x00000008)) {
@@ -7041,8 +7251,8 @@ public final class ProtoAML {
           refBaseSystemUnitPath_ = other.refBaseSystemUnitPath_;
           onChanged();
         }
-        if (other.hasRoleRequirements()) {
-          mergeRoleRequirements(other.getRoleRequirements());
+        if (other.hasSupportedRoleClass()) {
+          mergeSupportedRoleClass(other.getSupportedRoleClass());
         }
         if (internalElementBuilder_ == null) {
           if (!other.internalElement_.isEmpty()) {
@@ -7105,8 +7315,8 @@ public final class ProtoAML {
         if (!hasName()) {
           return false;
         }
-        if (hasRoleRequirements()) {
-          if (!getRoleRequirements().isInitialized()) {
+        if (hasSupportedRoleClass()) {
+          if (!getSupportedRoleClass().isInitialized()) {
             return false;
           }
         }
@@ -7294,122 +7504,122 @@ public final class ProtoAML {
         return this;
       }
 
-      private edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements roleRequirements_ = null;
+      private edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass supportedRoleClass_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements, edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements.Builder, edge.datamodel.protobuf.aml.ProtoAML.RoleRequirementsOrBuilder> roleRequirementsBuilder_;
+          edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass, edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass.Builder, edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClassOrBuilder> supportedRoleClassBuilder_;
       /**
-       * <code>optional .datamodel.RoleRequirements RoleRequirements = 3;</code>
+       * <code>optional .datamodel.SupportedRoleClass SupportedRoleClass = 3;</code>
        */
-      public boolean hasRoleRequirements() {
+      public boolean hasSupportedRoleClass() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional .datamodel.RoleRequirements RoleRequirements = 3;</code>
+       * <code>optional .datamodel.SupportedRoleClass SupportedRoleClass = 3;</code>
        */
-      public edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements getRoleRequirements() {
-        if (roleRequirementsBuilder_ == null) {
-          return roleRequirements_ == null ? edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements.getDefaultInstance() : roleRequirements_;
+      public edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass getSupportedRoleClass() {
+        if (supportedRoleClassBuilder_ == null) {
+          return supportedRoleClass_ == null ? edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass.getDefaultInstance() : supportedRoleClass_;
         } else {
-          return roleRequirementsBuilder_.getMessage();
+          return supportedRoleClassBuilder_.getMessage();
         }
       }
       /**
-       * <code>optional .datamodel.RoleRequirements RoleRequirements = 3;</code>
+       * <code>optional .datamodel.SupportedRoleClass SupportedRoleClass = 3;</code>
        */
-      public Builder setRoleRequirements(edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements value) {
-        if (roleRequirementsBuilder_ == null) {
+      public Builder setSupportedRoleClass(edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass value) {
+        if (supportedRoleClassBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          roleRequirements_ = value;
+          supportedRoleClass_ = value;
           onChanged();
         } else {
-          roleRequirementsBuilder_.setMessage(value);
+          supportedRoleClassBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000004;
         return this;
       }
       /**
-       * <code>optional .datamodel.RoleRequirements RoleRequirements = 3;</code>
+       * <code>optional .datamodel.SupportedRoleClass SupportedRoleClass = 3;</code>
        */
-      public Builder setRoleRequirements(
-          edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements.Builder builderForValue) {
-        if (roleRequirementsBuilder_ == null) {
-          roleRequirements_ = builderForValue.build();
+      public Builder setSupportedRoleClass(
+          edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass.Builder builderForValue) {
+        if (supportedRoleClassBuilder_ == null) {
+          supportedRoleClass_ = builderForValue.build();
           onChanged();
         } else {
-          roleRequirementsBuilder_.setMessage(builderForValue.build());
+          supportedRoleClassBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000004;
         return this;
       }
       /**
-       * <code>optional .datamodel.RoleRequirements RoleRequirements = 3;</code>
+       * <code>optional .datamodel.SupportedRoleClass SupportedRoleClass = 3;</code>
        */
-      public Builder mergeRoleRequirements(edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements value) {
-        if (roleRequirementsBuilder_ == null) {
+      public Builder mergeSupportedRoleClass(edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass value) {
+        if (supportedRoleClassBuilder_ == null) {
           if (((bitField0_ & 0x00000004) == 0x00000004) &&
-              roleRequirements_ != null &&
-              roleRequirements_ != edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements.getDefaultInstance()) {
-            roleRequirements_ =
-              edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements.newBuilder(roleRequirements_).mergeFrom(value).buildPartial();
+              supportedRoleClass_ != null &&
+              supportedRoleClass_ != edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass.getDefaultInstance()) {
+            supportedRoleClass_ =
+              edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass.newBuilder(supportedRoleClass_).mergeFrom(value).buildPartial();
           } else {
-            roleRequirements_ = value;
+            supportedRoleClass_ = value;
           }
           onChanged();
         } else {
-          roleRequirementsBuilder_.mergeFrom(value);
+          supportedRoleClassBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000004;
         return this;
       }
       /**
-       * <code>optional .datamodel.RoleRequirements RoleRequirements = 3;</code>
+       * <code>optional .datamodel.SupportedRoleClass SupportedRoleClass = 3;</code>
        */
-      public Builder clearRoleRequirements() {
-        if (roleRequirementsBuilder_ == null) {
-          roleRequirements_ = null;
+      public Builder clearSupportedRoleClass() {
+        if (supportedRoleClassBuilder_ == null) {
+          supportedRoleClass_ = null;
           onChanged();
         } else {
-          roleRequirementsBuilder_.clear();
+          supportedRoleClassBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
       /**
-       * <code>optional .datamodel.RoleRequirements RoleRequirements = 3;</code>
+       * <code>optional .datamodel.SupportedRoleClass SupportedRoleClass = 3;</code>
        */
-      public edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements.Builder getRoleRequirementsBuilder() {
+      public edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass.Builder getSupportedRoleClassBuilder() {
         bitField0_ |= 0x00000004;
         onChanged();
-        return getRoleRequirementsFieldBuilder().getBuilder();
+        return getSupportedRoleClassFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .datamodel.RoleRequirements RoleRequirements = 3;</code>
+       * <code>optional .datamodel.SupportedRoleClass SupportedRoleClass = 3;</code>
        */
-      public edge.datamodel.protobuf.aml.ProtoAML.RoleRequirementsOrBuilder getRoleRequirementsOrBuilder() {
-        if (roleRequirementsBuilder_ != null) {
-          return roleRequirementsBuilder_.getMessageOrBuilder();
+      public edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClassOrBuilder getSupportedRoleClassOrBuilder() {
+        if (supportedRoleClassBuilder_ != null) {
+          return supportedRoleClassBuilder_.getMessageOrBuilder();
         } else {
-          return roleRequirements_ == null ?
-              edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements.getDefaultInstance() : roleRequirements_;
+          return supportedRoleClass_ == null ?
+              edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass.getDefaultInstance() : supportedRoleClass_;
         }
       }
       /**
-       * <code>optional .datamodel.RoleRequirements RoleRequirements = 3;</code>
+       * <code>optional .datamodel.SupportedRoleClass SupportedRoleClass = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements, edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements.Builder, edge.datamodel.protobuf.aml.ProtoAML.RoleRequirementsOrBuilder> 
-          getRoleRequirementsFieldBuilder() {
-        if (roleRequirementsBuilder_ == null) {
-          roleRequirementsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements, edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements.Builder, edge.datamodel.protobuf.aml.ProtoAML.RoleRequirementsOrBuilder>(
-                  getRoleRequirements(),
+          edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass, edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass.Builder, edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClassOrBuilder> 
+          getSupportedRoleClassFieldBuilder() {
+        if (supportedRoleClassBuilder_ == null) {
+          supportedRoleClassBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass, edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass.Builder, edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClassOrBuilder>(
+                  getSupportedRoleClass(),
                   getParentForChildren(),
                   isClean());
-          roleRequirements_ = null;
+          supportedRoleClass_ = null;
         }
-        return roleRequirementsBuilder_;
+        return supportedRoleClassBuilder_;
       }
 
       private java.util.List<edge.datamodel.protobuf.aml.ProtoAML.InternalElement> internalElement_ =
@@ -7940,37 +8150,37 @@ public final class ProtoAML {
 
   }
 
-  public interface RoleRequirementsOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:datamodel.RoleRequirements)
+  public interface SupportedRoleClassOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:datamodel.SupportedRoleClass)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required string RefBaseRoleClassPath = 1;</code>
+     * <code>required string RefRoleClassPath = 1;</code>
      */
-    boolean hasRefBaseRoleClassPath();
+    boolean hasRefRoleClassPath();
     /**
-     * <code>required string RefBaseRoleClassPath = 1;</code>
+     * <code>required string RefRoleClassPath = 1;</code>
      */
-    java.lang.String getRefBaseRoleClassPath();
+    java.lang.String getRefRoleClassPath();
     /**
-     * <code>required string RefBaseRoleClassPath = 1;</code>
+     * <code>required string RefRoleClassPath = 1;</code>
      */
     com.google.protobuf.ByteString
-        getRefBaseRoleClassPathBytes();
+        getRefRoleClassPathBytes();
   }
   /**
-   * Protobuf type {@code datamodel.RoleRequirements}
+   * Protobuf type {@code datamodel.SupportedRoleClass}
    */
-  public  static final class RoleRequirements extends
+  public  static final class SupportedRoleClass extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:datamodel.RoleRequirements)
-      RoleRequirementsOrBuilder {
-    // Use RoleRequirements.newBuilder() to construct.
-    private RoleRequirements(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      // @@protoc_insertion_point(message_implements:datamodel.SupportedRoleClass)
+      SupportedRoleClassOrBuilder {
+    // Use SupportedRoleClass.newBuilder() to construct.
+    private SupportedRoleClass(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private RoleRequirements() {
-      refBaseRoleClassPath_ = "";
+    private SupportedRoleClass() {
+      refRoleClassPath_ = "";
     }
 
     @java.lang.Override
@@ -7978,7 +8188,7 @@ public final class ProtoAML {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private RoleRequirements(
+    private SupportedRoleClass(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -8004,7 +8214,7 @@ public final class ProtoAML {
             case 10: {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000001;
-              refBaseRoleClassPath_ = bs;
+              refRoleClassPath_ = bs;
               break;
             }
           }
@@ -8021,30 +8231,30 @@ public final class ProtoAML {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return edge.datamodel.protobuf.aml.ProtoAML.internal_static_datamodel_RoleRequirements_descriptor;
+      return edge.datamodel.protobuf.aml.ProtoAML.internal_static_datamodel_SupportedRoleClass_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return edge.datamodel.protobuf.aml.ProtoAML.internal_static_datamodel_RoleRequirements_fieldAccessorTable
+      return edge.datamodel.protobuf.aml.ProtoAML.internal_static_datamodel_SupportedRoleClass_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements.class, edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements.Builder.class);
+              edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass.class, edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass.Builder.class);
     }
 
     private int bitField0_;
-    public static final int REFBASEROLECLASSPATH_FIELD_NUMBER = 1;
-    private volatile java.lang.Object refBaseRoleClassPath_;
+    public static final int REFROLECLASSPATH_FIELD_NUMBER = 1;
+    private volatile java.lang.Object refRoleClassPath_;
     /**
-     * <code>required string RefBaseRoleClassPath = 1;</code>
+     * <code>required string RefRoleClassPath = 1;</code>
      */
-    public boolean hasRefBaseRoleClassPath() {
+    public boolean hasRefRoleClassPath() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required string RefBaseRoleClassPath = 1;</code>
+     * <code>required string RefRoleClassPath = 1;</code>
      */
-    public java.lang.String getRefBaseRoleClassPath() {
-      java.lang.Object ref = refBaseRoleClassPath_;
+    public java.lang.String getRefRoleClassPath() {
+      java.lang.Object ref = refRoleClassPath_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
@@ -8052,22 +8262,22 @@ public final class ProtoAML {
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
-          refBaseRoleClassPath_ = s;
+          refRoleClassPath_ = s;
         }
         return s;
       }
     }
     /**
-     * <code>required string RefBaseRoleClassPath = 1;</code>
+     * <code>required string RefRoleClassPath = 1;</code>
      */
     public com.google.protobuf.ByteString
-        getRefBaseRoleClassPathBytes() {
-      java.lang.Object ref = refBaseRoleClassPath_;
+        getRefRoleClassPathBytes() {
+      java.lang.Object ref = refRoleClassPath_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        refBaseRoleClassPath_ = b;
+        refRoleClassPath_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -8080,7 +8290,7 @@ public final class ProtoAML {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasRefBaseRoleClassPath()) {
+      if (!hasRefRoleClassPath()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -8091,7 +8301,7 @@ public final class ProtoAML {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, refBaseRoleClassPath_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, refRoleClassPath_);
       }
       unknownFields.writeTo(output);
     }
@@ -8102,7 +8312,7 @@ public final class ProtoAML {
 
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, refBaseRoleClassPath_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, refRoleClassPath_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -8115,16 +8325,16 @@ public final class ProtoAML {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements)) {
+      if (!(obj instanceof edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass)) {
         return super.equals(obj);
       }
-      edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements other = (edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements) obj;
+      edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass other = (edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass) obj;
 
       boolean result = true;
-      result = result && (hasRefBaseRoleClassPath() == other.hasRefBaseRoleClassPath());
-      if (hasRefBaseRoleClassPath()) {
-        result = result && getRefBaseRoleClassPath()
-            .equals(other.getRefBaseRoleClassPath());
+      result = result && (hasRefRoleClassPath() == other.hasRefRoleClassPath());
+      if (hasRefRoleClassPath()) {
+        result = result && getRefRoleClassPath()
+            .equals(other.getRefRoleClassPath());
       }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
@@ -8137,78 +8347,78 @@ public final class ProtoAML {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasRefBaseRoleClassPath()) {
-        hash = (37 * hash) + REFBASEROLECLASSPATH_FIELD_NUMBER;
-        hash = (53 * hash) + getRefBaseRoleClassPath().hashCode();
+      if (hasRefRoleClassPath()) {
+        hash = (37 * hash) + REFROLECLASSPATH_FIELD_NUMBER;
+        hash = (53 * hash) + getRefRoleClassPath().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements parseFrom(
+    public static edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements parseFrom(
+    public static edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements parseFrom(
+    public static edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements parseFrom(
+    public static edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements parseFrom(byte[] data)
+    public static edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements parseFrom(
+    public static edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements parseFrom(java.io.InputStream input)
+    public static edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements parseFrom(
+    public static edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements parseDelimitedFrom(java.io.InputStream input)
+    public static edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements parseDelimitedFrom(
+    public static edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements parseFrom(
+    public static edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements parseFrom(
+    public static edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -8220,7 +8430,7 @@ public final class ProtoAML {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements prototype) {
+    public static Builder newBuilder(edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() {
@@ -8235,25 +8445,25 @@ public final class ProtoAML {
       return builder;
     }
     /**
-     * Protobuf type {@code datamodel.RoleRequirements}
+     * Protobuf type {@code datamodel.SupportedRoleClass}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:datamodel.RoleRequirements)
-        edge.datamodel.protobuf.aml.ProtoAML.RoleRequirementsOrBuilder {
+        // @@protoc_insertion_point(builder_implements:datamodel.SupportedRoleClass)
+        edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClassOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return edge.datamodel.protobuf.aml.ProtoAML.internal_static_datamodel_RoleRequirements_descriptor;
+        return edge.datamodel.protobuf.aml.ProtoAML.internal_static_datamodel_SupportedRoleClass_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return edge.datamodel.protobuf.aml.ProtoAML.internal_static_datamodel_RoleRequirements_fieldAccessorTable
+        return edge.datamodel.protobuf.aml.ProtoAML.internal_static_datamodel_SupportedRoleClass_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements.class, edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements.Builder.class);
+                edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass.class, edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass.Builder.class);
       }
 
-      // Construct using edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements.newBuilder()
+      // Construct using edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -8270,36 +8480,36 @@ public final class ProtoAML {
       }
       public Builder clear() {
         super.clear();
-        refBaseRoleClassPath_ = "";
+        refRoleClassPath_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return edge.datamodel.protobuf.aml.ProtoAML.internal_static_datamodel_RoleRequirements_descriptor;
+        return edge.datamodel.protobuf.aml.ProtoAML.internal_static_datamodel_SupportedRoleClass_descriptor;
       }
 
-      public edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements getDefaultInstanceForType() {
-        return edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements.getDefaultInstance();
+      public edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass getDefaultInstanceForType() {
+        return edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass.getDefaultInstance();
       }
 
-      public edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements build() {
-        edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements result = buildPartial();
+      public edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass build() {
+        edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements buildPartial() {
-        edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements result = new edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements(this);
+      public edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass buildPartial() {
+        edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass result = new edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.refBaseRoleClassPath_ = refBaseRoleClassPath_;
+        result.refRoleClassPath_ = refRoleClassPath_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -8332,19 +8542,19 @@ public final class ProtoAML {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements) {
-          return mergeFrom((edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements)other);
+        if (other instanceof edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass) {
+          return mergeFrom((edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements other) {
-        if (other == edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements.getDefaultInstance()) return this;
-        if (other.hasRefBaseRoleClassPath()) {
+      public Builder mergeFrom(edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass other) {
+        if (other == edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass.getDefaultInstance()) return this;
+        if (other.hasRefRoleClassPath()) {
           bitField0_ |= 0x00000001;
-          refBaseRoleClassPath_ = other.refBaseRoleClassPath_;
+          refRoleClassPath_ = other.refRoleClassPath_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -8353,7 +8563,7 @@ public final class ProtoAML {
       }
 
       public final boolean isInitialized() {
-        if (!hasRefBaseRoleClassPath()) {
+        if (!hasRefRoleClassPath()) {
           return false;
         }
         return true;
@@ -8363,11 +8573,11 @@ public final class ProtoAML {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements parsedMessage = null;
+        edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements) e.getUnfinishedMessage();
+          parsedMessage = (edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -8378,24 +8588,24 @@ public final class ProtoAML {
       }
       private int bitField0_;
 
-      private java.lang.Object refBaseRoleClassPath_ = "";
+      private java.lang.Object refRoleClassPath_ = "";
       /**
-       * <code>required string RefBaseRoleClassPath = 1;</code>
+       * <code>required string RefRoleClassPath = 1;</code>
        */
-      public boolean hasRefBaseRoleClassPath() {
+      public boolean hasRefRoleClassPath() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required string RefBaseRoleClassPath = 1;</code>
+       * <code>required string RefRoleClassPath = 1;</code>
        */
-      public java.lang.String getRefBaseRoleClassPath() {
-        java.lang.Object ref = refBaseRoleClassPath_;
+      public java.lang.String getRefRoleClassPath() {
+        java.lang.Object ref = refRoleClassPath_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
-            refBaseRoleClassPath_ = s;
+            refRoleClassPath_ = s;
           }
           return s;
         } else {
@@ -8403,53 +8613,53 @@ public final class ProtoAML {
         }
       }
       /**
-       * <code>required string RefBaseRoleClassPath = 1;</code>
+       * <code>required string RefRoleClassPath = 1;</code>
        */
       public com.google.protobuf.ByteString
-          getRefBaseRoleClassPathBytes() {
-        java.lang.Object ref = refBaseRoleClassPath_;
+          getRefRoleClassPathBytes() {
+        java.lang.Object ref = refRoleClassPath_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          refBaseRoleClassPath_ = b;
+          refRoleClassPath_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>required string RefBaseRoleClassPath = 1;</code>
+       * <code>required string RefRoleClassPath = 1;</code>
        */
-      public Builder setRefBaseRoleClassPath(
+      public Builder setRefRoleClassPath(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000001;
-        refBaseRoleClassPath_ = value;
+        refRoleClassPath_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required string RefBaseRoleClassPath = 1;</code>
+       * <code>required string RefRoleClassPath = 1;</code>
        */
-      public Builder clearRefBaseRoleClassPath() {
+      public Builder clearRefRoleClassPath() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        refBaseRoleClassPath_ = getDefaultInstance().getRefBaseRoleClassPath();
+        refRoleClassPath_ = getDefaultInstance().getRefRoleClassPath();
         onChanged();
         return this;
       }
       /**
-       * <code>required string RefBaseRoleClassPath = 1;</code>
+       * <code>required string RefRoleClassPath = 1;</code>
        */
-      public Builder setRefBaseRoleClassPathBytes(
+      public Builder setRefRoleClassPathBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000001;
-        refBaseRoleClassPath_ = value;
+        refRoleClassPath_ = value;
         onChanged();
         return this;
       }
@@ -8464,39 +8674,39 @@ public final class ProtoAML {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:datamodel.RoleRequirements)
+      // @@protoc_insertion_point(builder_scope:datamodel.SupportedRoleClass)
     }
 
-    // @@protoc_insertion_point(class_scope:datamodel.RoleRequirements)
-    private static final edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:datamodel.SupportedRoleClass)
+    private static final edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements();
+      DEFAULT_INSTANCE = new edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass();
     }
 
-    public static edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements getDefaultInstance() {
+    public static edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<RoleRequirements>
-        PARSER = new com.google.protobuf.AbstractParser<RoleRequirements>() {
-      public RoleRequirements parsePartialFrom(
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<SupportedRoleClass>
+        PARSER = new com.google.protobuf.AbstractParser<SupportedRoleClass>() {
+      public SupportedRoleClass parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new RoleRequirements(input, extensionRegistry);
+          return new SupportedRoleClass(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<RoleRequirements> parser() {
+    public static com.google.protobuf.Parser<SupportedRoleClass> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<RoleRequirements> getParserForType() {
+    public com.google.protobuf.Parser<SupportedRoleClass> getParserForType() {
       return PARSER;
     }
 
-    public edge.datamodel.protobuf.aml.ProtoAML.RoleRequirements getDefaultInstanceForType() {
+    public edge.datamodel.protobuf.aml.ProtoAML.SupportedRoleClass getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -9817,10 +10027,10 @@ public final class ProtoAML {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_datamodel_InternalElement_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_datamodel_RoleRequirements_descriptor;
+    internal_static_datamodel_SupportedRoleClass_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_datamodel_RoleRequirements_fieldAccessorTable;
+      internal_static_datamodel_SupportedRoleClass_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_datamodel_Attribute_descriptor;
   private static final 
@@ -9843,24 +10053,26 @@ public final class ProtoAML {
       "\003 \001(\t\022\'\n\tAttribute\030\004 \003(\0132\024.datamodel.Att" +
       "ribute\"h\n\022SystemUnitClassLib\022\014\n\004Name\030\001 \002" +
       "(\t\022\017\n\007Version\030\002 \001(\t\0223\n\017SystemUnitClass\030\004" +
-      " \003(\0132\032.datamodel.SystemUnitClass\"\227\001\n\017Sys" +
+      " \003(\0132\032.datamodel.SystemUnitClass\"\322\001\n\017Sys" +
       "temUnitClass\022\014\n\004Name\030\001 \002(\t\022\030\n\020RefBaseCla",
-      "ssPath\030\002 \001(\t\0223\n\017InternalElement\030\003 \003(\0132\032." +
-      "datamodel.InternalElement\022\'\n\tAttribute\030\004" +
-      " \003(\0132\024.datamodel.Attribute\"g\n\021InstanceHi" +
-      "erarchy\022\014\n\004Name\030\001 \002(\t\022\017\n\007Version\030\002 \001(\t\0223" +
-      "\n\017InternalElement\030\003 \003(\0132\032.datamodel.Inte" +
-      "rnalElement\"\323\001\n\017InternalElement\022\014\n\004Name\030" +
-      "\001 \002(\t\022\035\n\025RefBaseSystemUnitPath\030\002 \001(\t\0225\n\020" +
-      "RoleRequirements\030\003 \001(\0132\033.datamodel.RoleR" +
-      "equirements\0223\n\017InternalElement\030\004 \003(\0132\032.d" +
-      "atamodel.InternalElement\022\'\n\tAttribute\030\005 ",
-      "\003(\0132\024.datamodel.Attribute\"0\n\020RoleRequire" +
-      "ments\022\034\n\024RefBaseRoleClassPath\030\001 \002(\t\"l\n\tA" +
-      "ttribute\022\014\n\004Name\030\001 \002(\t\022\031\n\021AttributeDataT" +
-      "ype\030\002 \002(\t\022\r\n\005Value\030\003 \002(\t\022\'\n\tAttribute\030\004 " +
-      "\003(\0132\024.datamodel.AttributeB\'\n\033edge.datamo" +
-      "del.protobuf.amlB\010ProtoAML"
+      "ssPath\030\002 \001(\t\0229\n\022SupportedRoleClass\030\003 \001(\013" +
+      "2\035.datamodel.SupportedRoleClass\0223\n\017Inter" +
+      "nalElement\030\004 \003(\0132\032.datamodel.InternalEle" +
+      "ment\022\'\n\tAttribute\030\005 \003(\0132\024.datamodel.Attr" +
+      "ibute\"g\n\021InstanceHierarchy\022\014\n\004Name\030\001 \002(\t" +
+      "\022\017\n\007Version\030\002 \001(\t\0223\n\017InternalElement\030\003 \003" +
+      "(\0132\032.datamodel.InternalElement\"\327\001\n\017Inter" +
+      "nalElement\022\014\n\004Name\030\001 \002(\t\022\035\n\025RefBaseSyste" +
+      "mUnitPath\030\002 \001(\t\0229\n\022SupportedRoleClass\030\003 " +
+      "\001(\0132\035.datamodel.SupportedRoleClass\0223\n\017In",
+      "ternalElement\030\004 \003(\0132\032.datamodel.Internal" +
+      "Element\022\'\n\tAttribute\030\005 \003(\0132\024.datamodel.A" +
+      "ttribute\".\n\022SupportedRoleClass\022\030\n\020RefRol" +
+      "eClassPath\030\001 \002(\t\"l\n\tAttribute\022\014\n\004Name\030\001 " +
+      "\002(\t\022\031\n\021AttributeDataType\030\002 \002(\t\022\r\n\005Value\030" +
+      "\003 \002(\t\022\'\n\tAttribute\030\004 \003(\0132\024.datamodel.Att" +
+      "ributeB\'\n\033edge.datamodel.protobuf.amlB\010P" +
+      "rotoAML"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -9897,7 +10109,7 @@ public final class ProtoAML {
     internal_static_datamodel_SystemUnitClass_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_datamodel_SystemUnitClass_descriptor,
-        new java.lang.String[] { "Name", "RefBaseClassPath", "InternalElement", "Attribute", });
+        new java.lang.String[] { "Name", "RefBaseClassPath", "SupportedRoleClass", "InternalElement", "Attribute", });
     internal_static_datamodel_InstanceHierarchy_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_datamodel_InstanceHierarchy_fieldAccessorTable = new
@@ -9909,13 +10121,13 @@ public final class ProtoAML {
     internal_static_datamodel_InternalElement_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_datamodel_InternalElement_descriptor,
-        new java.lang.String[] { "Name", "RefBaseSystemUnitPath", "RoleRequirements", "InternalElement", "Attribute", });
-    internal_static_datamodel_RoleRequirements_descriptor =
+        new java.lang.String[] { "Name", "RefBaseSystemUnitPath", "SupportedRoleClass", "InternalElement", "Attribute", });
+    internal_static_datamodel_SupportedRoleClass_descriptor =
       getDescriptor().getMessageTypes().get(6);
-    internal_static_datamodel_RoleRequirements_fieldAccessorTable = new
+    internal_static_datamodel_SupportedRoleClass_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_datamodel_RoleRequirements_descriptor,
-        new java.lang.String[] { "RefBaseRoleClassPath", });
+        internal_static_datamodel_SupportedRoleClass_descriptor,
+        new java.lang.String[] { "RefRoleClassPath", });
     internal_static_datamodel_Attribute_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_datamodel_Attribute_fieldAccessorTable = new

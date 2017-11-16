@@ -6,13 +6,13 @@ package edge.datamodel.aml.model;
  *    
  */
 
-public interface RoleRequirements {
+public interface SupportedRoleClass {
 	/**
 	 * @fn String getRefBaseRoleClassPath()
 	 * @brief Returns the referencing RoleClass path
 	 * @return String
 	 */
-	public String getRefBaseRoleClassPath();
+	public String getRefRoleClassPath();
 	
 	/**
 	 * @fn void setRefBaseRoleClassPath(String refBaseClassPath)
@@ -20,5 +20,5 @@ public interface RoleRequirements {
 	 * @param [in] refBaseClassPath	RoleClass path to refer
 	 * @return void
 	 */
-	public void setRefBaseRoleClassPath(String refBaseRoleClassPath);
+	public void setRefRoleClassPath(String refRoleClassPath);
 }

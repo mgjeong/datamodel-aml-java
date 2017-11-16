@@ -28,8 +28,9 @@ message SystemUnitClassLib {
 message SystemUnitClass {
 	required string Name = 1;
 	optional string RefBaseClassPath = 2;
-	repeated InternalElement InternalElement = 3;
-	repeated Attribute Attribute = 4;
+	optional SupportedRoleClass SupportedRoleClass = 3;
+	repeated InternalElement InternalElement = 4;
+	repeated Attribute Attribute = 5;
 }
 
 message InstanceHierarchy {
@@ -41,13 +42,13 @@ message InstanceHierarchy {
 message InternalElement {
 	required string Name = 1;
 	optional string RefBaseSystemUnitPath = 2;
-	optional RoleRequirements RoleRequirements = 3;
+	optional SupportedRoleClass SupportedRoleClass = 3;
 	repeated InternalElement InternalElement = 4;
 	repeated Attribute Attribute = 5; 
 }
 
-message RoleRequirements {
-	required string RefBaseRoleClassPath = 1;
+message SupportedRoleClass {
+	required string RefRoleClassPath = 1;
 }
 
 message Attribute {

@@ -3,9 +3,11 @@ package edge.datamodel.protobuf.aml;
 import edge.datamodel.aml.model.Attribute;
 import edge.datamodel.aml.model.InstanceHierarchy;
 import edge.datamodel.aml.model.InternalElement;
+import edge.datamodel.aml.model.SupportedRoleClass;
 import edge.datamodel.aml.model.Impl.AttributeImpl;
 import edge.datamodel.aml.model.Impl.InstanceHierarchyImpl;
 import edge.datamodel.aml.model.Impl.InternalElementImpl;
+import edge.datamodel.aml.model.Impl.SupportedRoleClassImpl;
 import edge.datamodel.protobuf.aml.ProtoAML.InstanceHierarchy.Builder;
 
 /**
@@ -23,7 +25,7 @@ public class ProtoAMLConverter {
 		ProtoAML.InternalElement.Builder iebuilder = ProtoAML.InternalElement.newBuilder();
 		iebuilder.setName(ie.getName());
 		iebuilder.setRefBaseSystemUnitPath(ie.getRefBaseSystemUnitPath());
-		ProtoAML.RoleRequirements.Builder rrbuilder = ProtoAML.RoleRequirements.newBuilder();
+		ProtoAML.SupportedRoleClass.Builder srcbuilder = ProtoAML.SupportedRoleClass.newBuilder();
 
 		//rrbuilder.setRefBaseRoleClassPath(ie.getRoleRequirements().getRefBaseRoleClassPath());
 
@@ -133,8 +135,10 @@ public class ProtoAMLConverter {
 		
 		AMLIe.setName(ie.getName());
 		AMLIe.setRefBaseSystemUnitPath(ie.getRefBaseSystemUnitPath());
-	
-		AMLIe.setRolerequirements(ie.getRoleRequirements().getRefBaseRoleClassPath());
+		
+		SupportedRoleClass AMLSRC = new SupportedRoleClassImpl();
+		AMLSRC.setRefRoleClassPath(ie.getSupportedRoleClass().getRefRoleClassPath());	
+		AMLIe.setSupportedRoleClass(AMLSRC);
 		
 		for(ProtoAML.InternalElement sie: ie.getInternalElementList()) {
 			AMLIe.getInternalElement().add(toAMLIE(sie));
