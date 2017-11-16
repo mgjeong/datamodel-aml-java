@@ -6,6 +6,7 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 import edge.datamodel.aml.model.Attribute;
 import edge.datamodel.aml.model.RoleClass;
@@ -17,6 +18,7 @@ import edge.datamodel.aml.model.RoleClassLib;
  */
 
 @XmlRootElement(name="RoleClassLib")
+@XmlType(propOrder = {"name","description","version","roleClass"})
 public class RoleClassLibImpl extends CommonElementImpl implements RoleClassLib{
 	private String Description;
 	private String Version;
@@ -63,6 +65,7 @@ public class RoleClassLibImpl extends CommonElementImpl implements RoleClassLib{
 		return super.getName();
 	}
 	
+	@XmlElement(name="Description")
 	public String getDescription() {
 		return Description;
 	}

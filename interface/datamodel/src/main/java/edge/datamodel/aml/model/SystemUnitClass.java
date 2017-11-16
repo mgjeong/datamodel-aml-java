@@ -40,6 +40,21 @@ public interface SystemUnitClass extends CommonElement{
 	public void setInternalElement(List<InternalElement> internalElement);
 	
 	/**
+	 * @fn void setSupportedRoleClass(String refRoleClassPath)
+	 * @brief Sets the RoleClass path to refer
+	 * @param [in] refRoleClassPath	RoleClass path
+	 * @return void
+	 */
+	public void setSupportedRoleClass(SupportedRoleClass supportedRoleClass);
+
+	/**
+	 * @fn RoleRequirements getSupportedRoleClass()
+	 * @brief Returns the SupportedRoleClass includes referencing RoleClass path
+	 * @return SupportedRoleClass
+	 */
+	public SupportedRoleClass getSupportedRoleClass();
+	
+	/**
 	 * @fn String getRefBaseCLassPath()
 	 * @brief Returns the referencing SystemUnitClass path
 	 * @return String

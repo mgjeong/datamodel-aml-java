@@ -92,19 +92,19 @@ public interface InternalElement extends CommonElement{
 	public InternalElement searchInternalElement(String name);
 	
 	/**
-	 * @fn void setRolerequirements(String refBaseRoleClassPath)
+	 * @fn void setSupportedRoleClass(String refRoleClassPath)
 	 * @brief Sets the RoleClass path to refer
-	 * @param [in] refBaseRoleClassPath	RoleClass path
+	 * @param [in] refRoleClassPath	RoleClass path
 	 * @return void
 	 */
-	public void setRolerequirements(String refBaseRoleClassPath);
+	public void setSupportedRoleClass(SupportedRoleClass supportedRoleClass);
 
 	/**
-	 * @fn RoleRequirements getRoleRequirements()
-	 * @brief Returns the RoleRequirements includes referencing RoleClass path
-	 * @return RoleRequirements
+	 * @fn RoleRequirements getSupportedRoleClass()
+	 * @brief Returns the SupportedRoleClass includes referencing RoleClass path
+	 * @return SupportedRoleClass
 	 */
-	public RoleRequirements getRoleRequirements();
+	public SupportedRoleClass getSupportedRoleClass();
 	
 	/**
 	 * @fn void setAttributeValue(String name, String value)

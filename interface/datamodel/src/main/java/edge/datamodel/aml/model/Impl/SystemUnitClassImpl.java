@@ -10,6 +10,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import edge.datamodel.aml.model.Attribute;
 import edge.datamodel.aml.model.InternalElement;
+import edge.datamodel.aml.model.SupportedRoleClass;
 import edge.datamodel.aml.model.SystemUnitClass;
 
 /**
@@ -18,10 +19,11 @@ import edge.datamodel.aml.model.SystemUnitClass;
  */
 
 @XmlRootElement(name="SystemUnitClass")
-@XmlType(propOrder = {"name","refBaseClassPath","attribute","internalElement"})
+@XmlType(propOrder = {"name","refBaseClassPath","attribute","internalElement","supportedRoleClass"})
 public class SystemUnitClassImpl extends CommonElementImpl implements SystemUnitClass{
 	private List<Attribute> Attribute;
 	private List<InternalElement> InternalElement;
+	private SupportedRoleClass SupportedRoleClass;
 	private String RefBaseClassPath;
 	
 	/**
@@ -105,6 +107,8 @@ public class SystemUnitClassImpl extends CommonElementImpl implements SystemUnit
 						
 		newIE.setRefBaseSystemUnitPath(refBaseSystemUnitPath);
 		
+		newIE.setSupportedRoleClass(suc.getSupportedRoleClass());
+		
 		this.InternalElement.add(newIE);
 		
 		return newIE;
@@ -127,6 +131,17 @@ public class SystemUnitClassImpl extends CommonElementImpl implements SystemUnit
 		}
 		return null;
 	}	
+	
+	@XmlElement(type=SupportedRoleClassImpl.class, name="SupportedRoleClass")
+	public SupportedRoleClass getSupportedRoleClass() {
+		return SupportedRoleClass;
+	}
+
+	public void setSupportedRoleClass(SupportedRoleClass supportedRoleClass){
+		
+		this.SupportedRoleClass = supportedRoleClass;
+		
+	}
 	
 	public String getRefBaseClassPath() {
 		return RefBaseClassPath;

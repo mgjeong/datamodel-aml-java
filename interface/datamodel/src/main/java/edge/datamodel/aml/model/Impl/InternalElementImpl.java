@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import edge.datamodel.aml.model.Attribute;
 import edge.datamodel.aml.model.InternalElement;
-import edge.datamodel.aml.model.RoleRequirements;
+import edge.datamodel.aml.model.SupportedRoleClass;
 import edge.datamodel.aml.model.SystemUnitClass;
 import edge.datamodel.aml.model.SystemUnitClassLib;
 
@@ -20,11 +20,11 @@ import edge.datamodel.aml.model.SystemUnitClassLib;
  */
 
 @XmlRootElement(name="InternalElement")
-@XmlType(propOrder = {"name","refBaseSystemUnitPath","attribute","internalElement"})
+@XmlType(propOrder = {"name","refBaseSystemUnitPath","attribute","internalElement","supportedRoleClass"})
 public class InternalElementImpl extends CommonElementImpl implements InternalElement{
 	private List<Attribute> Attribute;
 	private String RefBaseSystemUnitPath;
-	private RoleRequirements RoleRequirements;
+	private SupportedRoleClass SupportedRoleClass;
 	private List<InternalElement> InternalElement;
 
 	/**
@@ -34,7 +34,6 @@ public class InternalElementImpl extends CommonElementImpl implements InternalEl
 	 */
 	public InternalElementImpl(){
 		InternalElement = new ArrayList<InternalElement>();
-		RoleRequirements = new RoleRequirementsImpl();
 		Attribute = new ArrayList<Attribute>();
 	}
 	
@@ -47,7 +46,6 @@ public class InternalElementImpl extends CommonElementImpl implements InternalEl
 	 */
 	public InternalElementImpl(String name){
 		InternalElement = new ArrayList<InternalElement>();
-		RoleRequirements = new RoleRequirementsImpl();
 		Attribute = new ArrayList<Attribute>();
 		
 		this.setName(name);		
@@ -84,14 +82,15 @@ public class InternalElementImpl extends CommonElementImpl implements InternalEl
 	public void setInternalElement(List<InternalElement> internalElement) {
 		this.InternalElement = internalElement;
 	}
-		
-	public RoleRequirements getRoleRequirements() {
-		return RoleRequirements;
+
+	@XmlElement(type=SupportedRoleClassImpl.class, name="SupportedRoleClass")
+	public SupportedRoleClass getSupportedRoleClass() {
+		return SupportedRoleClass;
 	}
 
-	public void setRolerequirements(String refBaseRoleClassPath){
+	public void setSupportedRoleClass(SupportedRoleClass supportedRoleClass){
 		
-		this.RoleRequirements.setRefBaseRoleClassPath(refBaseRoleClassPath);
+		this.SupportedRoleClass = supportedRoleClass;
 		
 	}
 	
@@ -148,6 +147,8 @@ public class InternalElementImpl extends CommonElementImpl implements InternalEl
 		}
 		newIE.setRefBaseSystemUnitPath(suc_lib.getName() + "/" + suc_name);
 		
+		newIE.setSupportedRoleClass(SUC.getSupportedRoleClass());
+		
 		this.InternalElement.add(newIE);
 		return newIE;
 	}
@@ -161,6 +162,8 @@ public class InternalElementImpl extends CommonElementImpl implements InternalEl
 
 		newIE.setRefBaseSystemUnitPath(refBaseSystemUnitPath);
 		
+		newIE.setSupportedRoleClass(suc.getSupportedRoleClass());
+				
 		this.InternalElement.add(newIE);
 		return newIE;
 	}
