@@ -1,5 +1,5 @@
 # export-automationml 
-This repository provide to convert edge data to industrial standard data based on AutomationML and vice versa.
+This repository provides to convert edge data to industrial standard data based on AutomationML and vice versa.
 Export microservice can stream its data to external system such as northbound edges and cloud.
 Using the industrial data model, each system communicates its data without effort to define new data format between each.
 
