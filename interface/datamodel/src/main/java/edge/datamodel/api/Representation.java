@@ -1,6 +1,7 @@
 package edge.datamodel.api;
 
 import java.io.File;
+import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -91,6 +92,19 @@ public class Representation {
 		object.setInstanceHierarchy(ih);
 		
 		return object; 
+	}
+	
+	public AMLObject representCoreObject(String xmldata) throws JAXBException {
+		JAXBContext jaxbContext = JAXBContext.newInstance(CAEXFileImpl.class);
+        
+        Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+        StringReader reader = new StringReader(xmldata);
+        CAEXFile caexfile = (CAEXFile)jaxbUnmarshaller.unmarshal(reader);
+        
+        AMLObject object = new AMLObjectImpl();
+        object.setInstanceHierarchy(caexfile.getInstanceHierarchy());
+        
+        return object;
 	}
 	
 	/**
