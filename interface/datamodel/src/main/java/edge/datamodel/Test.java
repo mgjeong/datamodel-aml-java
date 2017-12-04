@@ -8,12 +8,20 @@ import java.util.Random;
 import org.edgexfoundry.domain.core.Event;
 import org.edgexfoundry.domain.core.Reading;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import edge.datamodel.aml.model.AMLModel;
 import edge.datamodel.aml.model.AMLObject;
+import edge.datamodel.aml.model.Attribute;
 import edge.datamodel.aml.model.CAEXFile;
+import edge.datamodel.aml.model.InstanceHierarchy;
+import edge.datamodel.aml.model.InternalElement;
+import edge.datamodel.aml.model.SupportedRoleClass;
+import edge.datamodel.aml.model.Impl.AMLObjectImpl;
 import edge.datamodel.aml.model.Impl.CAEXFileImpl;
+import edge.datamodel.api.InterfaceAdapter;
 import edge.datamodel.api.Representation;
-
 
 
 public class Test {
@@ -42,6 +50,7 @@ public class Test {
         reading2.setModified(30);
         reading2.setId("id2");
         reading2.setOrigin(35);
+		System.out.println("Event\n");
         reading2.setPushed(30);
 
         readings.add(reading1);
@@ -64,10 +73,10 @@ public class Test {
 		// Test Unmarshalling
 		AMLModel testmodel = sample_rep.initialize(null, "../../aml-models/data_modeling.aml");
 		
-		String teststring = sample_rep.representAML(testmodel.getRoleClassLib());
+		String teststring = sample_rep.representAmlobjectToAml(testmodel.getRoleClassLib());
 		System.out.println(teststring);
 		
-		teststring = sample_rep.representAML(testmodel.getSystemUnitClassLib());
+		teststring = sample_rep.representAmlobjectToAml(testmodel.getSystemUnitClassLib());
 		System.out.println(teststring);
 		
 		System.out.println("/////////////////////////////////////////////////////////////");
@@ -116,7 +125,7 @@ public class Test {
 		//Input Value
 		//InstanceHierarchy sample = sample_handler.putData(event, sample_model);
 		AMLObject sample = null;
-		sample = sample_rep.representAMLObject(event, testmodel);
+		sample = sample_rep.representDataToAmlobject(event, testmodel);
 //		sample = sample_rep.representAMLObject(event, sample_model);
 //		Event event2 = sample_rep.representCoredata(sample);
 				
@@ -137,14 +146,7 @@ public class Test {
 			System.out.println("Reading pushed : " + reading.getPushed());
 			System.out.println("\n");
 		}
-		
-
-		
-		
-		
-		
-		
-		
+						
 		
 		// Parsing AML
 //		String xmlString = sample_rep.representAML(sample_model.getRoleClassLib());
@@ -173,9 +175,26 @@ public class Test {
 		testaml.setRoleClassLib(testmodel.getRoleClassLib());
 		testaml.setSystemUnitClassLib(testmodel.getSystemUnitClassLib());
 		
-		String xmlString = sample_rep.representAML(testaml);
+		String xmlString = sample_rep.representAmlobjectToAml(testaml);
 		System.out.println(xmlString);
 		System.out.println("**************************************************");
+		
+		
+		// Parsing JSON Format
+		
+		String json = sample_rep.representAmlobjectToJson(sample);
+		System.out.println(json);
+				
+		AMLObject jsonsample = sample_rep.representJsontoAmlobject(json);
+		String jsonresult = sample_rep.representAmlobjectToAml(jsonsample.getInstanceHierarchy());
+		System.out.println(jsonresult);
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		

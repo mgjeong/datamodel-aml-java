@@ -20,9 +20,9 @@ public class SubscribedMessage implements IMqttMessageListener {
 	    	String amlmessage = message.toString();
 	    	
 	    	Representation amlrep = new Representation();
-	    	AMLObject amlobject = amlrep.representCoreObject(amlmessage);
+	    	AMLObject amlobject = amlrep.representAmlToAmlobject(amlmessage);
 	    	
-	    	Event edgexEvent = amlrep.representCoredata(amlobject);
+	    	Event edgexEvent = amlrep.representAmlobjectToData(amlobject);
 	    	        	
 			System.out.println("Event\n");
 			System.out.println("Event device : " + edgexEvent.getDevice());

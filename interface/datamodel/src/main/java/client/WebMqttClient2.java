@@ -60,12 +60,13 @@ public class WebMqttClient2 {
             System.out.println("Connecting to broker: " + broker);
             sampleClient.connect(connOpts);
             System.out.println("Connected");
-        	
+            SubscribedMessage subMsg = new SubscribedMessage();
+            sampleClient.subscribe(subTopic, subMsg);
+            
         	while(true) {
         		Thread.sleep(10000);
         		
-            SubscribedMessage subMsg = new SubscribedMessage();
-            sampleClient.subscribe(subTopic, subMsg);
+
 //            System.out.println("Publishing topic: " + pubTopic);
             System.out.println("Publishing message: " + content);
             
@@ -77,14 +78,14 @@ public class WebMqttClient2 {
     		
     		String teststring;
 			try {
-				teststring = sample_rep.representAML(testmodel.getRoleClassLib());
+				teststring = sample_rep.representAmlobjectToAml(testmodel.getRoleClassLib());
 			} catch (JAXBException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
     		
     		try {
-				teststring = sample_rep.representAML(testmodel.getSystemUnitClassLib());
+				teststring = sample_rep.representAmlobjectToAml(testmodel.getSystemUnitClassLib());
 			} catch (JAXBException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -131,7 +132,7 @@ public class WebMqttClient2 {
     		event.setOrigin(0);
     		
     		AMLObject sample = null;
-    		sample = sample_rep.representAMLObject(event, testmodel);
+    		sample = sample_rep.representDataToAmlobject(event, testmodel);
     		System.out.println("**************************************************");
     		CAEXFile testaml = new CAEXFileImpl();
     		testaml.setInstanceHierarchy(sample.getInstanceHierarchy());
@@ -140,7 +141,7 @@ public class WebMqttClient2 {
     		
     		String xmlString = null;
 			try {
-				xmlString = sample_rep.representAML(testaml);
+				xmlString = sample_rep.representAmlobjectToAml(testaml);
 			} catch (JAXBException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
