@@ -14,6 +14,9 @@ import javax.xml.bind.Unmarshaller;
 import org.edgexfoundry.domain.core.Event;
 import org.edgexfoundry.domain.core.Reading;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import edge.datamodel.aml.model.AMLModel;
 import edge.datamodel.aml.model.AMLObject;
 import edge.datamodel.aml.model.Attribute;
@@ -22,6 +25,7 @@ import edge.datamodel.aml.model.InstanceHierarchy;
 import edge.datamodel.aml.model.InternalElement;
 import edge.datamodel.aml.model.RoleClass;
 import edge.datamodel.aml.model.RoleClassLib;
+import edge.datamodel.aml.model.SupportedRoleClass;
 import edge.datamodel.aml.model.SystemUnitClass;
 import edge.datamodel.aml.model.SystemUnitClassLib;
 import edge.datamodel.aml.model.Impl.AMLModelImpl;
@@ -63,6 +67,12 @@ public class Representation {
 		return model;
 	}
 
+	/**
+	 * @fn AMLModel initialize(String name, String path)
+	 * @brief Initialize AutomationML datamodel set AMLModel's name and set to using translate job. This API should be called first, before usnig Translate API
+	 * and load aml file for formatting AMLModel using path.
+	 * @return AMLModel	AutomationML data model
+	 */
 	public AMLModel initialize(String name, String path) {
 		AMLModel model = new AMLModelImpl(name);
 		try {
@@ -75,13 +85,13 @@ public class Representation {
 	}
 	
 	/**
-	 * @fn AMLObject representAMLObject(Event data, AMLModel model)
+	 * @fn AMLObject representDataToAmlobject(Event data, AMLModel model)
 	 * @brief Represents edgeCoredata Event to AutomationML data object
 	 * @param [in] event	edgeCoredata Event
 	 * @param [in] model	AutomationML data object 
 	 * @return AMLObject AutomationML data
 	 */
-	public AMLObject representAMLObject(Event data, AMLModel model) {
+	public AMLObject representDataToAmlobject(Event data, AMLModel model) {
 		AMLObject object = new AMLObjectImpl();
 		
 		InstanceHierarchy ih = new InstanceHierarchyImpl("Edge_CoreData");
@@ -94,7 +104,13 @@ public class Representation {
 		return object; 
 	}
 	
-	public AMLObject representCoreObject(String xmldata) throws JAXBException {
+	/**
+	 * @fn AMLObject representAmlToAmlobject(String xmldata)
+	 * @brief Represents AML String to AML data object
+	 * @param [in] xmldata	AML String data
+	 * @return AMLObject AutomationML data
+	 */
+	public AMLObject representAmlToAmlobject(String xmldata) throws JAXBException {
 		JAXBContext jaxbContext = JAXBContext.newInstance(CAEXFileImpl.class);
         
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
@@ -108,12 +124,12 @@ public class Representation {
 	}
 	
 	/**
-	 * @fn String representAML(Object object)
-	 * @brief Represents AutomationML data to XML format String
+	 * @fn String representAmlobjectToAml(Object object)
+	 * @brief Represents AML data to AML String
 	 * @param [in] object	AutomationML object
 	 * @return String
 	 */
-    public String representAML(Object object) throws JAXBException {
+    public String representAmlobjectToAml(Object object) throws JAXBException {
         JAXBContext jaxbContext = JAXBContext.newInstance(CAEXFileImpl.class, InstanceHierarchyImpl.class, RoleClassLibImpl.class, SystemUnitClassLibImpl.class);
 
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
@@ -125,14 +141,58 @@ public class Representation {
         String ret= sw.toString();
         return ret;
     }
-
+    
 	/**
-	 * @fn Event representCoredata(AMLObject object)
+	 * @fn String representAmlobjectToJson(Object object)
+	 * @brief Represents AML data to Json String
+	 * @param [in] object	AutomationML object
+	 * @return String
+	 */
+    public String representAmlobjectToJson(AMLObject object) {
+		Gson gson = new GsonBuilder()
+				.registerTypeAdapter(AMLObject.class, new InterfaceAdapter())
+				.registerTypeAdapter(InstanceHierarchy.class, new InterfaceAdapter())
+				.registerTypeAdapter(InternalElement.class, new InterfaceAdapter())
+				.registerTypeAdapter(Attribute.class, new InterfaceAdapter())
+				.registerTypeAdapter(SupportedRoleClass.class, new InterfaceAdapter())
+				.setPrettyPrinting()
+				.serializeNulls()
+				.create();
+		String json = gson.toJson(object);
+		
+		return json;
+    }
+    
+    /**
+	 * @fn String representJsontToAmlobject(String json)
+	 * @brief Represents Json String to AML data
+	 * @param [in] json	Json String
+	 * @return AMLObject AutomationML data
+	 */
+    public AMLObject representJsontoAmlobject(String json) {
+		Gson gson = new GsonBuilder()
+				.registerTypeAdapter(AMLObject.class, new InterfaceAdapter())
+				.registerTypeAdapter(InstanceHierarchy.class, new InterfaceAdapter())
+				.registerTypeAdapter(InternalElement.class, new InterfaceAdapter())
+				.registerTypeAdapter(Attribute.class, new InterfaceAdapter())
+				.registerTypeAdapter(SupportedRoleClass.class, new InterfaceAdapter())
+				.setPrettyPrinting()
+				.serializeNulls()
+				.create();
+		
+		AMLObject object = new AMLObjectImpl();
+		object = gson.fromJson(json, AMLObjectImpl.class);	
+				
+		return object;
+    }
+    
+	/**
+	 * @fn Event representAmlobjectToData(AMLObject object)
 	 * @brief Represents AutomationML data object to edgeCoredata Event data
 	 * @param [in] object	AutomationML data object
 	 * @return Event	edgeCoredata Event data
 	 */
-	public Event representCoredata(AMLObject object) {
+	public Event representAmlobjectToData(AMLObject object) {
 		InternalElement ie = object.getInstanceHierarchy().searchInternalElement("Event");
 		
 		Event data = getEventData(ie);

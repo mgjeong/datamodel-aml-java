@@ -49,12 +49,12 @@ public class WebMqttClient {
             System.out.println("Connecting to broker: " + broker);
             sampleClient.connect(connOpts);
             System.out.println("Connected");
-        	
+            SubscribedMessage subMsg = new SubscribedMessage();
+            sampleClient.subscribe(subTopic, subMsg);
+            
         	while(true) {
         		Thread.sleep(10000);
         		
-            SubscribedMessage subMsg = new SubscribedMessage();
-            sampleClient.subscribe(subTopic, subMsg);
 //            System.out.println("Publishing topic: " + pubTopic);
             System.out.println("Publishing message: " + content);
             MqttMessage message1 = new MqttMessage((content + "1").getBytes());
