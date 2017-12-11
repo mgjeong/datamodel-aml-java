@@ -150,11 +150,11 @@ public class Representation {
 	 */
     public String representAmlobjectToJson(AMLObject object) {
 		Gson gson = new GsonBuilder()
-				.registerTypeAdapter(AMLObject.class, new InterfaceAdapter())
-				.registerTypeAdapter(InstanceHierarchy.class, new InterfaceAdapter())
-				.registerTypeAdapter(InternalElement.class, new InterfaceAdapter())
-				.registerTypeAdapter(Attribute.class, new InterfaceAdapter())
-				.registerTypeAdapter(SupportedRoleClass.class, new InterfaceAdapter())
+				.registerTypeAdapter(AMLObject.class, new JsonFormatter())
+				.registerTypeAdapter(InstanceHierarchy.class, new JsonFormatter())
+				.registerTypeAdapter(InternalElement.class, new JsonFormatter())
+				.registerTypeAdapter(Attribute.class, new JsonFormatter())
+				.registerTypeAdapter(SupportedRoleClass.class, new JsonFormatter())
 				.setPrettyPrinting()
 				.serializeNulls()
 				.create();
@@ -171,11 +171,11 @@ public class Representation {
 	 */
     public AMLObject representJsontoAmlobject(String json) {
 		Gson gson = new GsonBuilder()
-				.registerTypeAdapter(AMLObject.class, new InterfaceAdapter())
-				.registerTypeAdapter(InstanceHierarchy.class, new InterfaceAdapter())
-				.registerTypeAdapter(InternalElement.class, new InterfaceAdapter())
-				.registerTypeAdapter(Attribute.class, new InterfaceAdapter())
-				.registerTypeAdapter(SupportedRoleClass.class, new InterfaceAdapter())
+				.registerTypeAdapter(AMLObject.class, new JsonFormatter())
+				.registerTypeAdapter(InstanceHierarchy.class, new JsonFormatter())
+				.registerTypeAdapter(InternalElement.class, new JsonFormatter())
+				.registerTypeAdapter(Attribute.class, new JsonFormatter())
+				.registerTypeAdapter(SupportedRoleClass.class, new JsonFormatter())
 				.setPrettyPrinting()
 				.serializeNulls()
 				.create();
