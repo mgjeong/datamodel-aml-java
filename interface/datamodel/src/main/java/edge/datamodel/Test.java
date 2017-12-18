@@ -10,6 +10,7 @@ import org.edgexfoundry.domain.core.Reading;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonParser;
 
 import edge.datamodel.aml.model.AMLModel;
 import edge.datamodel.aml.model.AMLObject;
@@ -20,51 +21,83 @@ import edge.datamodel.aml.model.InternalElement;
 import edge.datamodel.aml.model.SupportedRoleClass;
 import edge.datamodel.aml.model.Impl.AMLObjectImpl;
 import edge.datamodel.aml.model.Impl.CAEXFileImpl;
-import edge.datamodel.api.InterfaceAdapter;
+import edge.datamodel.api.JsonFormatter;
 import edge.datamodel.api.Representation;
 
 
 public class Test {
 
-    public static Event getEdgeXEvent() {
+	public static Event getEdgeXEvent() {
 
         List<Reading> readings = null;
         readings = new ArrayList<Reading>();
-
         Random rand = new Random();
         Reading reading1 = new Reading();
-        reading1.setName("TestReading1");
-        reading1.setValue(rand.nextLong() + "");
+        reading1.setName("Robot_Model");
+        reading1.setValue("SR-P7-R970");
         reading1.setCreated(0);
-        reading1.setDevice("TestDevice1");
-        reading1.setModified(10);
-        reading1.setId("id1");
-        reading1.setOrigin(15);
+        reading1.setDevice("Robot1");
+        reading1.setModified(0);
+        reading1.setId(rand.nextLong() + "");
+        reading1.setOrigin(new Timestamp(System.currentTimeMillis()).getTime());
         reading1.setPushed(20);
 
         Reading reading2 = new Reading();
-        reading2.setName("TestReading2");
-        reading2.setValue(rand.nextLong() + "");
-        reading2.setCreated(25);
-        reading2.setDevice("TestDevice2");
-        reading2.setModified(30);
-        reading2.setId("id2");
-        reading2.setOrigin(35);
-		System.out.println("Event\n");
+        reading2.setName("Robot_SW_Version");
+        reading2.setValue("0.0.1");
+        reading2.setCreated(0);
+        reading2.setDevice("Robot1");
+        reading2.setModified(0);
+        reading2.setId(rand.nextLong() + "");
+        reading2.setOrigin(new Timestamp(System.currentTimeMillis()).getTime());
         reading2.setPushed(30);
 
+        Reading reading3 = new Reading();
+        reading3.setName("Robot_Servo_Status");
+        reading3.setValue("5");
+        reading3.setCreated(0);
+        reading3.setDevice("Robot1");
+        reading3.setModified(0);
+        reading3.setId(rand.nextLong() + "");
+        reading3.setOrigin(new Timestamp(System.currentTimeMillis()).getTime());
+        reading3.setPushed(30);
+        
+        Reading reading4 = new Reading();
+        reading4.setName("Robot_Status");
+        reading4.setValue("2");
+        reading4.setCreated(0);
+        reading4.setDevice("Robot1");
+        reading4.setModified(0);
+        reading4.setId(rand.nextLong() + "");
+        reading4.setOrigin(new Timestamp(System.currentTimeMillis()).getTime());
+        reading4.setPushed(30);
+        
+        Reading reading5 = new Reading();
+        reading5.setName("Robot_Log");
+        reading5.setValue("[2,Reconfigure Request]");
+        reading5.setCreated(0);
+        reading5.setDevice("Robot1");
+        reading5.setModified(0);
+        reading5.setId(rand.nextLong() + "");
+        reading5.setOrigin(new Timestamp(System.currentTimeMillis()).getTime());
+        reading5.setPushed(30);
+        
         readings.add(reading1);
         readings.add(reading2);
-
-        Event event = new Event("Test", readings);
-        event.setCreated(10);
-        event.setModified(20);
-        event.setId("id");
+        readings.add(reading3);
+        readings.add(reading4);
+        readings.add(reading5);
+        
+        Event event = new Event("Robot1", readings);
+        event.setCreated(0);
+        event.setModified(0);
+        event.setId(rand.nextLong() + "");
         event.markPushed(new Timestamp(System.currentTimeMillis()).getTime());
         event.setOrigin(new Timestamp(System.currentTimeMillis()).getTime());
 
         return event;
     }
+
 	
 	public static void main(String[] args) throws Exception {
 		Representation sample_rep = new Representation();
@@ -190,7 +223,16 @@ public class Test {
 		System.out.println(jsonresult);
 		
 		
+		JsonParser jsonparser = new JsonParser();
 		
+		String jsonString = "{\"name\":\"ingestionmanager\",\"appid\":\"datamodel_app1\",\"type\":\"streaming\",\"host\":\"ws://ec2-52-14-109-113.us-east-2.compute.amazonaws.com:5601/ws\",\"endpoint\":\"v1/userid/ingestionmanager/datamodel_app1\"}";
+		System.out.println(jsonString);
+
+		
+		String type = jsonparser.parse(jsonString).getAsJsonObject().get("type").getAsString();
+		System.out.println("type:" + type);
+		String endpoint = jsonparser.parse(jsonString).getAsJsonObject().get("endpoint").getAsString();
+		System.out.println("endpoint:" + endpoint);
 		
 		
 		

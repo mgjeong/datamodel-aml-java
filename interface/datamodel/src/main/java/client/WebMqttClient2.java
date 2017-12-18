@@ -34,20 +34,21 @@ import edge.datamodel.aml.model.AMLObject;
 import edge.datamodel.aml.model.CAEXFile;
 import edge.datamodel.aml.model.Impl.CAEXFileImpl;
 import edge.datamodel.api.Representation;
+import edge.datamodel.api.MqttClientCallback;
 
 public class WebMqttClient2 {
     public static void main(String[] args) throws InterruptedException {
 
     	String pubTopic = "bbb/aml";
         
-        String subTopic = "aaa/#";
+        String subTopic = "#";
         String content = "Message from MqttPublishSample2";
         int qos = 0;
         // String broker =
-        //String broker = "ws://ec2-52-14-109-113.us-east-2.compute.amazonaws.com:5601/ws";
-        String broker = "ws://172.17.42.1:15675/ws";
+        String broker = "ws://ec2-52-14-109-113.us-east-2.compute.amazonaws.com:5601/ws";
+        //String broker = "ws://172.17.42.1:15675/ws";
         // "ws://ec2-52-14-109-113.us-east-2.compute.amazonaws.com:1883";
-        String clientId = "JavaSample2";
+        String clientId = "JavaSample1";
         MemoryPersistence persistence = new MemoryPersistence();
 
         try {
@@ -60,8 +61,7 @@ public class WebMqttClient2 {
             System.out.println("Connecting to broker: " + broker);
             sampleClient.connect(connOpts);
             System.out.println("Connected");
-            SubscribedMessage subMsg = new SubscribedMessage();
-            sampleClient.subscribe(subTopic, subMsg);
+            sampleClient.subscribe(subTopic, qos);
             
         	while(true) {
         		Thread.sleep(10000);
@@ -112,7 +112,7 @@ public class WebMqttClient2 {
     		test_reading.setCreated(2);
     		test_reading.setModified(2);
     		test_reading.setOrigin(2);
-    		
+    		//
     		test_reading = new Reading("TEMP3", "30");
     		test_reading.setDevice("CNC");
     		test_reading.setPushed(3);

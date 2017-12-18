@@ -7,9 +7,9 @@ DEP_ROOT=$(pwd)
 
 #Clone and install core-domain service
 cd $DEP_ROOT
-git clone https://github.com/edgexfoundry/core-domain.git
-cd core-domain
-mvn install -Dmaven.test.skip=true -U
+#git clone https://github.com/edgexfoundry/core-domain.git
+#cd core-domain
+#mvn install -Dmaven.test.skip=true -U
 
 #Start package datamodel
 cd $PROJECT_ROOT

@@ -1,17 +1,22 @@
-package client;
+package edge.datamodel.api;
 
-import org.eclipse.paho.client.mqttv3.IMqttMessageListener;
+import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
+import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.edgexfoundry.domain.core.Event;
 import org.edgexfoundry.domain.core.Reading;
 
 import edge.datamodel.aml.model.AMLObject;
-import edge.datamodel.api.Representation;
 
-public class SubscribedMessage implements IMqttMessageListener {
-
-    public void messageArrived(String topic, MqttMessage message) throws Exception {
-    	
+public class MqttClientCallback implements MqttCallback {
+	@Override
+	public void connectionLost(Throwable cause) {
+		System.out.println("Connection Lost!");		
+	}
+	
+	@Override
+	public void messageArrived(String topic, MqttMessage message) throws Exception {
+		System.out.println("messageArrived");
     	if(topic.equals("bbb/aml")) {
     		
 	        System.out.println("subcribed topic : " + topic);
@@ -50,9 +55,16 @@ public class SubscribedMessage implements IMqttMessageListener {
 	    	System.out.println("aml**************************************************************************");        
     	}
     	else {
-   		
             System.out.println("subcribed topic : " + topic);
-            System.out.println("subcribed Message : " + message);
+            //System.out.println("subcribed Message : " + message);
     	}
-    }
+		
+	}
+
+	@Override
+	public void deliveryComplete(IMqttDeliveryToken token) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

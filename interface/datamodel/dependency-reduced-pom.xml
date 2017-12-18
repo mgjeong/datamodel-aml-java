@@ -47,6 +47,13 @@
       </plugin>
     </plugins>
   </build>
+  <repositories>
+    <repository>
+      <id>releases</id>
+      <name>EdgeX Releases Repository</name>
+      <url>${nexusproxy}/${repobasepath}/releases</url>
+    </repository>
+  </repositories>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -106,7 +113,7 @@
     </dependency>
   </dependencies>
   <properties>
-    <core-domain.version>0.2.0-SNAPSHOT</core-domain.version>
+    <core-domain.version>0.2.0</core-domain.version>
     <spring.data.mongodb.version>1.9.1.RELEASE</spring.data.mongodb.version>
     <junit.version>4.12</junit.version>
     <java.version>1.8</java.version>
@@ -114,7 +121,9 @@
     <zeromq.version>0.3.6</zeromq.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <spring.boot.plugin.version>1.4.0.RELEASE</spring.boot.plugin.version>
+    <nexusproxy>https://nexus.edgexfoundry.org</nexusproxy>
     <maven.compiler.plugin.version>3.6.1</maven.compiler.plugin.version>
+    <repobasepath>content/repositories</repobasepath>
     <protobuf.version>3.3.1</protobuf.version>
   </properties>
 </project>

@@ -22,64 +22,83 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
-public class WebMqttClient {
-    public static void main(String[] args) throws InterruptedException {
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
-    	String pubTopic1 = "aaa/aaa";
-        String pubTopic2 = "aaa/bbb";
-        String pubTopic3 = "aaa/ccc";
-                
-        String subTopic = "#";
-        String content = "Message from MqttPublishSample";
-        int qos = 0;
-        // String broker =
-        //String broker = "ws://ec2-52-14-109-113.us-east-2.compute.amazonaws.com:5601/ws";
-        String broker = "ws://172.17.42.1:15675/ws";
-        // "ws://ec2-52-14-109-113.us-east-2.compute.amazonaws.com:1883";
-        String clientId = "JavaSample1";
-        MemoryPersistence persistence = new MemoryPersistence();
+import edge.datamodel.api.MqttClientCallback;
 
-        try {
-            MqttClient sampleClient = new MqttClient(broker, clientId,
-                    persistence);
-            MqttConnectOptions connOpts = new MqttConnectOptions();
-            connOpts.setCleanSession(true);
-            connOpts.setUserName("username");
-            connOpts.setPassword("password".toCharArray());
-            System.out.println("Connecting to broker: " + broker);
+public class WebMqttClient{
+    
+	public static void main(String[] args) throws InterruptedException{
+		//String broker = "ws://172.17.42.1:15675/ws";
+	    // "ws://ec2-52-14-109-113.us-east-2.compute.amazonaws.com:1883";
+	    
+		//String broker = "ws://ec2-52-14-109-113.us-east-2.compute.amazonaws.com:5601/ws";
+		String broker = "ws://172.17.42.1:15675/ws";
+		String clientId = "datamodel_sample2";
+	    
+		String pubTopicEndpoint = "aaa/aaa";
+	    String subTopicEndpoint = "bbb/#";
+	    
+	    int qos = 1;
+	    MemoryPersistence persistence = new MemoryPersistence();
+	    
+	    //Connect to Broker
+	    try {
+	    	MqttClient sampleClient;
+			MqttConnectOptions connOpts = new MqttConnectOptions();
+		    
+			connOpts.setCleanSession(true);
+		    connOpts.setUserName("username");
+		    connOpts.setPassword("password".toCharArray());
+		    connOpts.setConnectionTimeout(3);
+		    System.out.println("Connecting to broker: " + broker);
+	        sampleClient = new MqttClient(broker, clientId, persistence);
             sampleClient.connect(connOpts);
             System.out.println("Connected");
-            SubscribedMessage subMsg = new SubscribedMessage();
-            sampleClient.subscribe(subTopic, subMsg);
             
+	        sampleClient.setCallback(new MqttClientCallback());
+	        	        
+	        System.out.println("Connected");
+	        
+	        //setup topic
+	        sampleClient.subscribe(subTopicEndpoint, qos);
+
         	while(true) {
-        		Thread.sleep(10000);
-        		
-//            System.out.println("Publishing topic: " + pubTopic);
-            System.out.println("Publishing message: " + content);
-            MqttMessage message1 = new MqttMessage((content + "1").getBytes());
-            MqttMessage message2 = new MqttMessage((content + "2").getBytes());
-            MqttMessage message3 = new MqttMessage((content + "3").getBytes());
-            message1.setQos(qos);
-            message2.setQos(qos);
-            message3.setQos(qos);
-            sampleClient.publish(pubTopic1, message1);
-            sampleClient.publish(pubTopic2, message2);
-            sampleClient.publish(pubTopic3, message3);
-            System.out.println("Message published");
-            
-            
-        	}   
-            // sampleClient.disconnect();
-            // System.out.println("Disconnected");
-            // System.exit(0);
-        } catch (MqttException me) {
-            System.out.println("reason " + me.getReasonCode());
-            System.out.println("msg " + me.getMessage());
-            System.out.println("loc " + me.getLocalizedMessage());
-            System.out.println("cause " + me.getCause());
-            System.out.println("excep " + me);
-            me.printStackTrace();
-        }
-    }
+        		try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		    System.out.println("Subscribing request Endpoint message");
+		    
+		    String requestEndpointstr;
+		    Gson gson = new Gson();
+		    
+		    JsonObject requestEndpoint = new JsonObject();
+		    requestEndpoint.addProperty("name", "ingestionmanager");
+		    requestEndpoint.addProperty("appid", "app1");
+		    requestEndpoint.addProperty("type", "streaming");
+		    requestEndpoint.addProperty("host", "100.0.0.1");
+		    requestEndpoint.addProperty("endpoint", "v1/userid/ingestionmanager/appid");
+		    requestEndpointstr = gson.toJson(requestEndpoint);
+		    
+		    MqttMessage message = new MqttMessage(requestEndpointstr.getBytes());
+		    message.setQos(qos);
+		    sampleClient.publish(pubTopicEndpoint, message);
+	        
+		    System.out.println("Publishing request Endpoint message");
+		    
+		    System.out.println("Message published");
+        	}
+	    } catch (MqttException me) {
+	        System.out.println("reason " + me.getReasonCode());
+	        System.out.println("msg " + me.getMessage());
+	        System.out.println("loc " + me.getLocalizedMessage());
+	        System.out.println("cause " + me.getCause());
+	        System.out.println("excep " + me);
+	        me.printStackTrace();
+	    }
+    }		
 }
