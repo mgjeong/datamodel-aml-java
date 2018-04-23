@@ -6,8 +6,9 @@ datamodel-aml-java is a library which provides the way to present raw data(key/v
 
 ## Prerequisites ##
 - Maven
-  - ...
-
+  - Version : 3.0.5 or above
+  - [Where to download](https://maven.apache.org/download.cgi)
+  - [How to install](https://maven.apache.org/install.html)
 - Protobuf
   - Version : 3.4.0(mandatory)
   - Protobuf will be installed by build option (See 'How to build')
