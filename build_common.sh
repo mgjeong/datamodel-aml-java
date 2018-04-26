@@ -104,7 +104,7 @@ build() {
 
     # Build Java
     cd $PROJECT_ROOT/java
-    mvn clean install assembly:single -U -Dmaven.test.skip=true
+    mvn clean install assembly:single -U
     if [ $? -ne 0 ]; then 
         echo -e "${RED}Build failed${NO_COLOUR}" 
         exit 1
