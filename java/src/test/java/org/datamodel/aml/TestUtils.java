@@ -96,8 +96,6 @@ public class TestUtils {
 	
 	public static boolean isEqual(byte[] binary1, byte[] binary2)
 	{
-		System.out.println(binary1.length);
-		System.out.println(binary2.length);
 		if(binary1.length != binary2.length)
 			return false;
 		
