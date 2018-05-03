@@ -31,7 +31,7 @@ AML_INSTALL_PREREQUISITES=false
 AML_BUILD_MODE="release"
 AML_LOGGING="off"
 AML_DISABLE_PROTOBUF=false
-
+LD_LIBRARY_PATH=./..:$LD_LIBRARY_PATH
 # RELEASE="1"
 # LOGGING="0"
 
@@ -101,6 +101,8 @@ build() {
         echo -e "${RED}Build failed${NO_COLOUR}" 
         exit 1 
     fi
+
+    export LD_LIBRARY_PATH
 
     # Build Java
     cd $PROJECT_ROOT/java
