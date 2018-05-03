@@ -46,4 +46,4 @@ datamodel-aml-java is a library which provides the way to present raw data(key/v
     - datamodel-aml-java-0.0.1-SNAPSHOT-jar-with-dependencies.jar</br>
     - jniaml.so</br>
     - aml.so</br>
-2. Reference aml library APIs : [doc/javadoc/index.html](doc/javadoc/index.html)
+2. Reference aml library APIs : [doc/index.html](doc/index.html)
