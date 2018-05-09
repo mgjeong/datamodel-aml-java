@@ -36,16 +36,24 @@ Java_org_datamodel_aml_AMLObject_constructAMLObject__Ljava_lang_String_2Ljava_la
     std::string timeStamp(charTimeStamp);
     env->ReleaseStringUTFChars(jTimeStamp, charTimeStamp);
 
-    AML::AMLObject* amlObj = new AML::AMLObject(deviceId, timeStamp);
-    if (!amlObj)
+    try
     {
-        ThrowAMLException(AML::NO_MEMORY, "Failed to create AMLObject");
-        return 0;
-    }
+        AML::AMLObject* amlObj = new AML::AMLObject(deviceId, timeStamp);
+        
+        if (!amlObj)
+        {
+            ThrowAMLException(AML::NO_MEMORY, "Failed to create AMLObject");
+            return 0;
+        }
 
-    // printf("constructAMLObject e (amlObj : %p)\n", amlObj);
-    return reinterpret_cast<jlong>(amlObj);
-    //SetHandle<AML::AMLObject>(env, thiz, amlObj);
+        // printf("constructAMLObject e (amlObj : %p)\n", amlObj);
+        return reinterpret_cast<jlong>(amlObj);
+        //SetHandle<AML::AMLObject>(env, thiz, amlObj);
+    }
+    catch (const AML::AMLException& e)
+    {
+        ThrowAMLException(e.code(), e.reason().c_str());
+    }
 }
 
 JNIEXPORT jlong JNICALL
@@ -67,17 +75,25 @@ Java_org_datamodel_aml_AMLObject_constructAMLObject__Ljava_lang_String_2Ljava_la
     VERIFY_NON_NULL_THROW_EXCEPTION(charId, "charId is null", JNI_EXCEPTION);
     std::string id(charId);
     env->ReleaseStringUTFChars(jId, charId);
-
-    AML::AMLObject* amlObj = new AML::AMLObject(deviceId, timeStamp, id);
-    if (!amlObj)
+    
+    try
     {
-        ThrowAMLException(AML::NO_MEMORY, "Failed to create AMLObject");
-        return 0;
+        AML::AMLObject* amlObj = new AML::AMLObject(deviceId, timeStamp, id);
+        
+        if (!amlObj)
+        {
+            ThrowAMLException(AML::NO_MEMORY, "Failed to create AMLObject");
+            return 0;
+        }
+        
+        // printf("constructAMLObject e (amlObj : %p)\n", amlObj);
+        return reinterpret_cast<jlong>(amlObj);
+        //SetHandle<AML::AMLObject>(env, thiz, amlObj);
     }
-
-    // printf("constructAMLObject e (amlObj : %p)\n", amlObj);
-    return reinterpret_cast<jlong>(amlObj);
-    //SetHandle<AML::AMLObject>(env, thiz, amlObj);
+    catch (const AML::AMLException& e)
+    {
+        ThrowAMLException(e.code(), e.reason().c_str());
+    }
 }
 
 JNIEXPORT void JNICALL

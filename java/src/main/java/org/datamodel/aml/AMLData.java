@@ -33,7 +33,7 @@ public final class AMLData {
     }
 
     /**
-     * @brief       Constructor.
+     * Constructor for AMLData.
      */
     public AMLData() {
         this.mNativeHandle = constructAMLData();
@@ -45,10 +45,11 @@ public final class AMLData {
         this.mNativeNeedsDelete = nativeNeedsDelete;
     }
 
-    public native long constructAMLData();
+    private native long constructAMLData();
 
     /**
-     * @brief       This function set key and string type value pair on AMLData.
+     * This function set key and string type value pair on AMLData.
+     * 
      * @param       key     [in] AMLData key.
      * @param       value   [in] AMLData value.
      */
@@ -59,7 +60,8 @@ public final class AMLData {
     private native void setValueImpl(String key, String value) throws AMLException;
 
     /**
-     * @brief       This function set key and string list type value pair on AMLData.
+     * This function set key and string list type value pair on AMLData.
+     * 
      * @param       key     [in] AMLData key.
      * @param       value   [in] AMLData value.
      */
@@ -70,7 +72,8 @@ public final class AMLData {
     private native void setValueImpl(String key,  List<String> value) throws AMLException;
 
     /**
-     * @brief       This function set key and AMLData type value pair on AMLData.
+     * This function set key and AMLData type value pair on AMLData.
+     * 
      * @param       key     [in] AMLData key.
      * @param       value   [in] AMLData value.
      */
@@ -81,7 +84,8 @@ public final class AMLData {
     private native void setValueImpl(String key, AMLData value) throws AMLException;
 
     /**
-     * @brief       This function returns string list about AMLData's AMLMap keys string list.
+     * This function returns string list about AMLData's AMLMap keys string list.
+     * 
      * @return      list of string data's keys value list.
      */
     public List<String> getKeys() throws AMLException {
@@ -91,7 +95,8 @@ public final class AMLData {
     private native List<String> getKeysImpl() throws AMLException;
 
     /**
-     * @brief       This function returns string list about AMLData's AMLMap keys string list.
+     * This function returns string list about AMLData's AMLMap keys string list.
+     * 
      * @param       key     [in] string of the AMLData value to check.
      * @return      ValueType that represents the type of value matched to the key.
      */
@@ -102,7 +107,8 @@ public final class AMLData {
     private native ValueType getValueTypeImpl(String key) throws AMLException;
 
     /**
-     * @brief       This function returns string which matched key in a AMLData's AMLMap.
+     * This function returns string which matched key in a AMLData's AMLMap.
+     * 
      * @param       key     [in] pair's which has string value, key.
      * @return      String value which matched using key on AMLMap.
      * @exception   AMLException If input key is not matching on AMLMap.
@@ -114,7 +120,8 @@ public final class AMLData {
     private native String getValueToStrImpl(String key) throws AMLException;
 
     /**
-     * @brief       This function returns string list which matched key in a AMLData's AMLMap.
+     * This function returns string list which matched key in a AMLData's AMLMap.
+     * 
      * @param       key     [in] pair's which has string list value, key.
      * @return      String list value which matched using key on AMLMap.
      * @exception   AMLException If input key is not matching on AMLMap.
@@ -126,7 +133,8 @@ public final class AMLData {
     private native List<String> getValueToStrListImpl(String key) throws AMLException;
 
     /**
-     * @brief       This function returns AMLData which matched key in a AMLData's AMLMap.
+     * This function returns AMLData which matched key in a AMLData's AMLMap.
+     * 
      * @param       key     [in] pair's which has AMLData, key.
      * @return      AMLData value which matched using key on AMLMap.
      * @exception   AMLException If input key is not matching on AMLMap.

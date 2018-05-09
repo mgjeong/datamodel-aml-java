@@ -20,10 +20,6 @@ package org.datamodel.aml;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.lang.Byte;
-import java.util.Scanner;
-
-import org.datamodel.aml.*;
 
 public class Sample {
     public static void main(String[] args) throws Exception {
