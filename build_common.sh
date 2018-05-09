@@ -81,7 +81,7 @@ usage() {
     echo "  --logging=[on|off](default: off)                             :  Build aml library including logs"
     echo "  --disable_protobuf=[true|false](default: false)              :  Disable protobuf feature"
     echo "  --install_prerequisites=[true|false](default: false)         :  Install the prerequisite S/W to build aml"
-    echo "  --java_home=[](default: \$JAVA_HOME from env)                :  Java path to build aml"
+    echo "  --java_home=[](default: \$JAVA_HOME from env)                 :  Java path to build aml"
     echo "  -c                                                           :  Clean aml repository"
     echo "  -h / --help                                                  :  Display help and exit"
 }
@@ -106,7 +106,7 @@ build() {
 
     # Build Java
     cd $PROJECT_ROOT/java
-    mvn clean install assembly:single -U
+    mvn clean install assembly:single -U -Dmaven.test.skip=true
     if [ $? -ne 0 ]; then 
         echo -e "${RED}Build failed${NO_COLOUR}" 
         exit 1
