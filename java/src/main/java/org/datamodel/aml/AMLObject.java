@@ -19,7 +19,7 @@ package org.datamodel.aml;
 
 import java.util.List;
 
-public final class AMLObject {
+public class AMLObject {
 
     static {
         System.loadLibrary("jniaml");
@@ -51,6 +51,10 @@ public final class AMLObject {
     }
 
     private native long constructAMLObject(String deviceId, String timeStamp, String id) throws AMLException;
+
+    protected AMLObject(long nativeHandle) {
+        this(nativeHandle, true);
+    }
 
     private AMLObject(long nativeHandle, boolean nativeNeedsDelete) {
         this.mNativeHandle = nativeHandle;
@@ -129,6 +133,10 @@ public final class AMLObject {
 
     public long getHandle() {
         return this.mNativeHandle;
+    }
+
+    public AMLObject getInstance() {
+        return this;
     }
 
     @Override
