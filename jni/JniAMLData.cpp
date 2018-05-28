@@ -151,13 +151,13 @@ Java_org_datamodel_aml_AMLData_getValueTypeImpl(JNIEnv *env, jobject thiz, jstri
     switch (type)
     {
         case AML::AMLValueType::String :
-            jtype = g_jobj_ValueType_String;
+            jtype = env->GetStaticObjectField(g_cls_AMLDataValueType, g_fid_ValueType_String);
             break;
         case AML::AMLValueType::StringArray :
-            jtype = g_jobj_ValueType_StringList;
+            jtype = env->GetStaticObjectField(g_cls_AMLDataValueType, g_fid_ValueType_StringList);
             break;
         case AML::AMLValueType::AMLData :
-            jtype = g_jobj_ValueType_AMLData;
+            jtype = env->GetStaticObjectField(g_cls_AMLDataValueType, g_fid_ValueType_AMLData);
             break;
         default :
             //@TODO 

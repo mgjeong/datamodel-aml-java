@@ -42,6 +42,7 @@ extern jclass g_cls_ArrayList;
 extern jclass g_cls_Byte;
 extern jclass g_cls_AMLObject;
 extern jclass g_cls_AMLData;
+extern jclass g_cls_AMLDataValueType;
 extern jclass g_cls_AMLException;
 
 extern jmethodID g_mid_ArrayList_ctor;
@@ -54,9 +55,9 @@ extern jmethodID g_mid_AMLData_N_ctor;
 extern jmethodID g_mid_AMLException_ctor;
 extern jmethodID g_mid_AMLException_setNativeExceptionLocation;
 
-extern jobject g_jobj_ValueType_String;
-extern jobject g_jobj_ValueType_StringList;
-extern jobject g_jobj_ValueType_AMLData;
+extern jfieldID g_fid_ValueType_String;
+extern jfieldID g_fid_ValueType_StringList;
+extern jfieldID g_fid_ValueType_AMLData;
 
 static jfieldID GetHandleField(JNIEnv *env, jobject jobj)
 {
