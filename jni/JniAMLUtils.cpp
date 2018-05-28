@@ -34,6 +34,7 @@ jclass g_cls_ArrayList = nullptr;
 jclass g_cls_Byte = nullptr;
 jclass g_cls_AMLObject = nullptr;
 jclass g_cls_AMLData = nullptr;
+jclass g_cls_AMLDataValueType = nullptr;
 jclass g_cls_AMLException = nullptr;
 
 jmethodID g_mid_List_size = nullptr;
@@ -48,9 +49,9 @@ jmethodID g_mid_AMLData_N_ctor = nullptr;
 jmethodID g_mid_AMLException_ctor = nullptr;
 jmethodID g_mid_AMLException_setNativeExceptionLocation = nullptr;
 
-jobject g_jobj_ValueType_String = nullptr;
-jobject g_jobj_ValueType_StringList = nullptr;
-jobject g_jobj_ValueType_AMLData = nullptr;
+jfieldID g_fid_ValueType_String = nullptr;
+jfieldID g_fid_ValueType_StringList = nullptr;
+jfieldID g_fid_ValueType_AMLData = nullptr;
 
 // JNI OnLoad
 JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM* vm, void* reserved)
@@ -129,16 +130,21 @@ JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM* vm, void* reserved)
     // AMLData.ValueType
     clazz = env->FindClass("org/datamodel/aml/AMLData$ValueType");
     VERIFY_VARIABLE_NULL(clazz);
+    g_cls_AMLDataValueType = (jclass)env->NewGlobalRef(clazz);
+    env->DeleteLocalRef(clazz);
 
     jfieldID fid = nullptr;
-    fid = env->GetStaticFieldID(clazz, "STRING", "Lorg/datamodel/aml/AMLData$ValueType;");
-    g_jobj_ValueType_String = env->GetStaticObjectField(clazz, fid);
+    fid = env->GetStaticFieldID(g_cls_AMLDataValueType, "STRING", "Lorg/datamodel/aml/AMLData$ValueType;");
+    VERIFY_VARIABLE_NULL(fid);
+    g_fid_ValueType_String = fid;
 
-    fid = env->GetStaticFieldID(clazz, "STRING_LIST", "Lorg/datamodel/aml/AMLData$ValueType;");
-    g_jobj_ValueType_StringList = env->GetStaticObjectField(clazz, fid);
+    fid = env->GetStaticFieldID(g_cls_AMLDataValueType, "STRING_LIST", "Lorg/datamodel/aml/AMLData$ValueType;");
+    VERIFY_VARIABLE_NULL(fid);
+    g_fid_ValueType_StringList = fid;
 
-    fid = env->GetStaticFieldID(clazz, "AMLDATA", "Lorg/datamodel/aml/AMLData$ValueType;");
-    g_jobj_ValueType_AMLData = env->GetStaticObjectField(clazz, fid);
+    fid = env->GetStaticFieldID(g_cls_AMLDataValueType, "AMLDATA", "Lorg/datamodel/aml/AMLData$ValueType;");
+    VERIFY_VARIABLE_NULL(fid);
+    g_fid_ValueType_AMLData = fid;
 
     // AMLException
     clazz = env->FindClass("org/datamodel/aml/AMLException");
