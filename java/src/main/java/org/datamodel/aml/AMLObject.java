@@ -140,7 +140,7 @@ public class AMLObject {
     }
 
     @Override
-    public void finalize() throws Throwable {
+    protected void finalize() throws Throwable {
         super.finalize();
 
         if (this.mNativeNeedsDelete) {
