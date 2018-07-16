@@ -97,8 +97,7 @@ build() {
     # Build JNI
     cd ${PROJECT_ROOT}
         make JAVA_HOME=${AML_JAVA_HOME} TARGET_ARCH=${AML_TARGET_ARCH} BUILD_MODE=${AML_BUILD_MODE}
-
-    if [ $? -ne 0 ]; then 
+	 if [ $? -ne 0 ]; then
         echo -e "${RED}Build failed${NO_COLOUR}" 
         exit 1 
     fi
@@ -160,6 +159,7 @@ process_cmd_args() {
                     exit 1
                 fi
                 echo -e "${GREEN}Build mode is: $AML_BUILD_MODE${NO_COLOUR}"
+
                 shift 1;
                 ;;
             --logging=*)
