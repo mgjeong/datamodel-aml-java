@@ -20,6 +20,15 @@
 PROJECT_ROOT=$(pwd)
 LD_LIBRARY_PATH=./..:$LD_LIBRARY_PATH
 
+function build(){
+	cd $PROJECT_ROOT
+	./build_common.sh --build_mode=debug
+	if [ $? -ne 0 ]; then
+		echo -e "\033[31m"Build failed"\033[0m"
+		exit 1
+	fi
+}
+
 function run_test(){
     export LD_LIBRARY_PATH
 
@@ -30,9 +39,14 @@ function run_test(){
         exit 1 
     fi
 }
+echo -e "Building AML DataModel library.."
+build
+echo -e "Done building AML DataModel library"
 
 echo -e "Running AML DataModel Unittests"
 run_test
 echo -e "Done Unittests"
+
+echo -e "\033[34m"Check datamodel-aml-java/java/target/jacoco-ut/index.html File."\033[0m"
 
 exit 0
