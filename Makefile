@@ -38,6 +38,7 @@ INCLUDES += -I$(DEP_DIR)/datamodel-aml-cpp/include
 INCLUDES += -Ijni
 
 CXXFLAGS = -std=c++0x -g -Wall
+DEBUGFLAGS = -DDEBUG
 
 all : $(LIB_FULL_NAME)
 
@@ -46,11 +47,12 @@ clean :
 		#rm -r $(OUTPUT_DIR)
 
 $(LIB_OBJS): $(LIB_SRCS)
-		$(CXX) $(CXXFLAGS) -c $(LIB_SRCS) $(INCLUDES)
+			$(CXX) $(CXXFLAGS) -c $(LIB_SRCS) $(INCLUDES)
 
 $(LIB_FULL_NAME) : $(LIB_OBJS)
-		$(CXX) -shared -o $(LIB_FULL_NAME) $(LIB_OBJS) -lrt -lm -L$(DEP_DIR)/datamodel-aml-cpp/out/linux/x86_64/release -laml
-		$(RM) *.o
+			$(CXX) -shared -o $(LIB_FULL_NAME) $(LIB_OBJS) -lrt -lm -L$(DEP_DIR)/datamodel-aml-cpp/out/linux/x86_64/$(BUILD_MODE) -laml
+			$(RM) *.o
+
 
 
 #$(shell mkdir -p $(OUTPUT_DIR)/$(TARGET_ARCH))
