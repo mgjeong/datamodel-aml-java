@@ -50,7 +50,7 @@ $(LIB_OBJS): $(LIB_SRCS)
 			$(CXX) $(CXXFLAGS) -c $(LIB_SRCS) $(INCLUDES)
 
 $(LIB_FULL_NAME) : $(LIB_OBJS)
-			$(CXX) -shared -o $(LIB_FULL_NAME) $(LIB_OBJS) -lrt -lm -L$(DEP_DIR)/datamodel-aml-cpp/out/linux/x86_64/$(BUILD_MODE) -laml
+			$(CXX) -shared -o $(LIB_FULL_NAME) $(LIB_OBJS) -lrt -lm -L$(DEP_DIR)/datamodel-aml-cpp/out/linux/$(TARGET_ARCH)/$(BUILD_MODE) -laml
 			$(RM) *.o
 
 
