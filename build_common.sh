@@ -70,7 +70,7 @@ install_dependencies() {
     # Copy the library file
     if [ "armhf-native" = ${AML_TARGET_ARCH} ]; then
          cd out/linux/armhf/${AML_BUILD_MODE}
-    else [ "x86_64" = ${AML_TARGET_ARCH} ]; then
+    else
         cd out/linux/${AML_TARGET_ARCH}/${AML_BUILD_MODE}
     fi
     cp *.so ${PROJECT_ROOT}
