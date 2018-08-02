@@ -31,9 +31,10 @@ ifeq ($(TARGET_ARCH), arm)
 	CXX = arm-linux-gnueabihf-g++
 else
 	CXX = g++ -fPIC
-	ifeq ($(TARGET_ARCH), armhf-native)
-		TARGET_ARCH = armhf
-	endif
+endif
+
+ifeq ($(TARGET_ARCH), armhf-native)
+	TARGET_ARCH = armhf
 endif
 
 INCLUDES += -I$(JAVA_HOME)/include -I$(JAVA_HOME)/include/linux
