@@ -31,6 +31,9 @@ ifeq ($(TARGET_ARCH), arm)
 	CXX = arm-linux-gnueabihf-g++
 else
 	CXX = g++ -fPIC
+	ifeq ($(TARGET_ARCH), armhf-native)
+		TARGET_ARCH = armhf
+	endif
 endif
 
 INCLUDES += -I$(JAVA_HOME)/include -I$(JAVA_HOME)/include/linux
@@ -52,7 +55,6 @@ $(LIB_OBJS): $(LIB_SRCS)
 $(LIB_FULL_NAME) : $(LIB_OBJS)
 			$(CXX) -shared -o $(LIB_FULL_NAME) $(LIB_OBJS) -lrt -lm -L$(DEP_DIR)/datamodel-aml-cpp/out/linux/$(TARGET_ARCH)/$(BUILD_MODE) -laml
 			$(RM) *.o
-
 
 
 #$(shell mkdir -p $(OUTPUT_DIR)/$(TARGET_ARCH))
