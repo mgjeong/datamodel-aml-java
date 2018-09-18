@@ -39,15 +39,15 @@ public class Sample {
 
 
             // create AMLObject
-            String deviceId = "GTC001";
+            String deviceId = "SAMPLE001";
             String timeStamp = "123456789";
 
             AMLObject amlObj = new AMLObject(deviceId, timeStamp);
 
             // create "Model" data
             AMLData model = new AMLData();
-            model.setValue("ctname", "Model_107.113.97.248");
-            model.setValue("con", "SR-P7-970");
+            model.setValue("a", "Model_107.113.97.248");
+            model.setValue("b", "SR-P7-970");
 
             // create "Sample" data
             AMLData axis  = new AMLData();
