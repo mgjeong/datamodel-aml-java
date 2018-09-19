@@ -24,8 +24,6 @@
 JNIEXPORT jlong JNICALL
 Java_org_datamodel_aml_AMLObject_constructAMLObject__Ljava_lang_String_2Ljava_lang_String_2(JNIEnv *env, jobject thiz, jstring jDeviceId, jstring jTimeStamp)
 {
-    // printf("constructAMLObject s\n");
-
     const char *charDeviceId = env->GetStringUTFChars(jDeviceId, nullptr);
     VERIFY_NON_NULL_THROW_EXCEPTION(charDeviceId, "charDeviceId is null", JNI_EXCEPTION);
     std::string deviceId(charDeviceId);
@@ -36,31 +34,27 @@ Java_org_datamodel_aml_AMLObject_constructAMLObject__Ljava_lang_String_2Ljava_la
     std::string timeStamp(charTimeStamp);
     env->ReleaseStringUTFChars(jTimeStamp, charTimeStamp);
 
+    AML::AMLObject* amlObj = nullptr;
     try
     {
-        AML::AMLObject* amlObj = new AML::AMLObject(deviceId, timeStamp);
-        
+        amlObj = new AML::AMLObject(deviceId, timeStamp);
         if (!amlObj)
         {
             ThrowAMLException(AML::NO_MEMORY, "Failed to create AMLObject");
             return 0;
         }
-
-        // printf("constructAMLObject e (amlObj : %p)\n", amlObj);
-        return reinterpret_cast<jlong>(amlObj);
-        //SetHandle<AML::AMLObject>(env, thiz, amlObj);
     }
     catch (const AML::AMLException& e)
     {
         ThrowAMLException(e.code(), e.reason().c_str());
     }
+
+    return reinterpret_cast<jlong>(amlObj);
 }
 
 JNIEXPORT jlong JNICALL
 Java_org_datamodel_aml_AMLObject_constructAMLObject__Ljava_lang_String_2Ljava_lang_String_2Ljava_lang_String_2(JNIEnv *env, jobject thiz, jstring jDeviceId, jstring jTimeStamp, jstring jId)
 {
-    // printf("constructAMLObject s\n");
-
     const char *charDeviceId = env->GetStringUTFChars(jDeviceId, nullptr);
     VERIFY_NON_NULL_THROW_EXCEPTION(charDeviceId, "charDeviceId is null", JNI_EXCEPTION);
     std::string deviceId(charDeviceId);
@@ -75,31 +69,28 @@ Java_org_datamodel_aml_AMLObject_constructAMLObject__Ljava_lang_String_2Ljava_la
     VERIFY_NON_NULL_THROW_EXCEPTION(charId, "charId is null", JNI_EXCEPTION);
     std::string id(charId);
     env->ReleaseStringUTFChars(jId, charId);
-    
+
+    AML::AMLObject* amlObj = nullptr;
     try
     {
-        AML::AMLObject* amlObj = new AML::AMLObject(deviceId, timeStamp, id);
-        
+        amlObj = new AML::AMLObject(deviceId, timeStamp, id);
         if (!amlObj)
         {
             ThrowAMLException(AML::NO_MEMORY, "Failed to create AMLObject");
             return 0;
         }
-        
-        // printf("constructAMLObject e (amlObj : %p)\n", amlObj);
-        return reinterpret_cast<jlong>(amlObj);
-        //SetHandle<AML::AMLObject>(env, thiz, amlObj);
     }
     catch (const AML::AMLException& e)
     {
         ThrowAMLException(e.code(), e.reason().c_str());
     }
+
+    return reinterpret_cast<jlong>(amlObj);
 }
 
 JNIEXPORT void JNICALL
 Java_org_datamodel_aml_AMLObject_addDataImpl(JNIEnv *env, jobject thiz, jstring jName, jobject jData)
 {
-    // printf("addDataImpl s\n");
     AML::AMLObject* amlObj = GetHandle<AML::AMLObject>(env, thiz);
 
     const char *charName = env->GetStringUTFChars(jName, nullptr);
@@ -122,7 +113,6 @@ Java_org_datamodel_aml_AMLObject_addDataImpl(JNIEnv *env, jobject thiz, jstring 
 JNIEXPORT jobject JNICALL
 Java_org_datamodel_aml_AMLObject_getDataImpl(JNIEnv *env, jobject thiz, jstring jName)
 {
-    // printf("getDataImpl s\n");
     AML::AMLObject* amlObj = GetHandle<AML::AMLObject>(env, thiz);
 
     const char *charName = env->GetStringUTFChars(jName, nullptr);
@@ -148,7 +138,6 @@ Java_org_datamodel_aml_AMLObject_getDataImpl(JNIEnv *env, jobject thiz, jstring 
 JNIEXPORT jobject JNICALL
 Java_org_datamodel_aml_AMLObject_getDataNamesImpl(JNIEnv *env, jobject thiz)
 {
-    // printf("getDataNamesImpl s\n");
     AML::AMLObject* amlObj = GetHandle<AML::AMLObject>(env, thiz);
 
     std::vector<std::string> dataNames;
@@ -167,7 +156,6 @@ Java_org_datamodel_aml_AMLObject_getDataNamesImpl(JNIEnv *env, jobject thiz)
 JNIEXPORT jstring JNICALL
 Java_org_datamodel_aml_AMLObject_getDeviceIdImpl(JNIEnv *env, jobject thiz)
 {
-    // printf("getDeviceIdImpl s\n");
     AML::AMLObject* amlObj = GetHandle<AML::AMLObject>(env, thiz);
 
     std::string deviceId;
@@ -186,7 +174,6 @@ Java_org_datamodel_aml_AMLObject_getDeviceIdImpl(JNIEnv *env, jobject thiz)
 JNIEXPORT jstring JNICALL
 Java_org_datamodel_aml_AMLObject_getTimeStampImpl(JNIEnv *env, jobject thiz)
 {
-    // printf("getTimeStampImpl s\n");
     AML::AMLObject* amlObj = GetHandle<AML::AMLObject>(env, thiz);
 
     std::string timeStamp;
@@ -205,7 +192,6 @@ Java_org_datamodel_aml_AMLObject_getTimeStampImpl(JNIEnv *env, jobject thiz)
 JNIEXPORT jstring JNICALL
 Java_org_datamodel_aml_AMLObject_getIdImpl(JNIEnv *env, jobject thiz)
 {
-    // printf("getIdImpl s\n");
     AML::AMLObject* amlObj = GetHandle<AML::AMLObject>(env, thiz);
 
     std::string id;
