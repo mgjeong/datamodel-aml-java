@@ -23,7 +23,6 @@
 JNIEXPORT jlong JNICALL
 Java_org_datamodel_aml_AMLData_constructAMLData(JNIEnv *env, jobject thiz)
 {
-    // printf("constructAMLData s\n");
     AML::AMLData* amlData = new AML::AMLData();
     if (!amlData)
     {
@@ -31,14 +30,12 @@ Java_org_datamodel_aml_AMLData_constructAMLData(JNIEnv *env, jobject thiz)
         return 0;
     }
 
-    // printf("constructAMLData e (amlData : %p)\n", amlData);
     return reinterpret_cast<jlong>(amlData);
 }
 
 JNIEXPORT void JNICALL
 Java_org_datamodel_aml_AMLData_setValueImpl__Ljava_lang_String_2Ljava_lang_String_2(JNIEnv *env, jobject thiz, jstring jKey, jstring jValue)
 {
-    // printf("setValueImpl s\n");
     AML::AMLData* amlData = GetHandle<AML::AMLData>(env, thiz);
 
     const char *charKey = env->GetStringUTFChars(jKey, nullptr);
@@ -64,7 +61,6 @@ Java_org_datamodel_aml_AMLData_setValueImpl__Ljava_lang_String_2Ljava_lang_Strin
 JNIEXPORT void JNICALL
 Java_org_datamodel_aml_AMLData_setValueImpl__Ljava_lang_String_2Ljava_util_List_2(JNIEnv *env, jobject thiz, jstring jKey, jobject jValue)
 {
-    // printf("setValueImpl s\n");
     AML::AMLData* amlData = GetHandle<AML::AMLData>(env, thiz);
 
     const char *charKey = env->GetStringUTFChars(jKey, nullptr);
@@ -88,7 +84,6 @@ Java_org_datamodel_aml_AMLData_setValueImpl__Ljava_lang_String_2Ljava_util_List_
 JNIEXPORT void JNICALL
 Java_org_datamodel_aml_AMLData_setValueImpl__Ljava_lang_String_2Lorg_datamodel_aml_AMLData_2(JNIEnv *env, jobject thiz, jstring jKey, jobject jValue)
 {
-    // printf("setValueImpl s\n");
     AML::AMLData* amlData = GetHandle<AML::AMLData>(env, thiz);
 
     const char *charKey = env->GetStringUTFChars(jKey, nullptr);
@@ -111,7 +106,6 @@ Java_org_datamodel_aml_AMLData_setValueImpl__Ljava_lang_String_2Lorg_datamodel_a
 JNIEXPORT jobject JNICALL
 Java_org_datamodel_aml_AMLData_getKeysImpl(JNIEnv *env, jobject thiz)
 {
-    // printf("getKeysImpl s\n");
     AML::AMLData* amlData = GetHandle<AML::AMLData>(env, thiz);
 
     std::vector<std::string> keys;
@@ -217,7 +211,6 @@ Java_org_datamodel_aml_AMLData_getValueToStrListImpl(JNIEnv *env, jobject thiz, 
 JNIEXPORT jobject JNICALL
 Java_org_datamodel_aml_AMLData_getValueToAMLDataImpl(JNIEnv *env, jobject thiz, jstring jKey)
 {
-    // printf("getValueToAMLDataImpl s\n");
     AML::AMLData* amlData = GetHandle<AML::AMLData>(env, thiz);
 
     const char *charKey = env->GetStringUTFChars(jKey, nullptr);

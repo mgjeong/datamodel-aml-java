@@ -28,9 +28,15 @@ LIB_NAME = jniaml
 LIB_FULL_NAME = lib$(LIB_NAME).so
 
 ifeq ($(TARGET_ARCH), arm)
-	CXX = arm-linux-gnueabihf-g++
+   CXX = arm-linux-gnueabihf-g++
 else
-	CXX = g++ -fPIC
+   CXX = g++ -fPIC
+endif
+
+CPP_TARGET_ARCH = $(TARGET_ARCH)
+
+ifeq ($(TARGET_ARCH), armhf-native)
+   CPP_TARGET_ARCH = armhf
 endif
 
 INCLUDES += -I$(JAVA_HOME)/include -I$(JAVA_HOME)/include/linux
@@ -50,9 +56,8 @@ $(LIB_OBJS): $(LIB_SRCS)
 			$(CXX) $(CXXFLAGS) -c $(LIB_SRCS) $(INCLUDES)
 
 $(LIB_FULL_NAME) : $(LIB_OBJS)
-			$(CXX) -shared -o $(LIB_FULL_NAME) $(LIB_OBJS) -lrt -lm -L$(DEP_DIR)/datamodel-aml-cpp/out/linux/x86_64/$(BUILD_MODE) -laml
+			$(CXX) -shared -o $(LIB_FULL_NAME) $(LIB_OBJS) -lrt -lm -L$(DEP_DIR)/datamodel-aml-cpp/out/linux/$(CPP_TARGET_ARCH)/$(BUILD_MODE) -laml
 			$(RM) *.o
-
 
 
 #$(shell mkdir -p $(OUTPUT_DIR)/$(TARGET_ARCH))

@@ -52,8 +52,8 @@ install_dependencies() {
     fi
 
     cd ./datamodel-aml-cpp
-    git checkout master
-    git pull
+    git fetch origin
+    git checkout v1.0_rel
 
     # Build datamodel-aml-cpp
     echo -e "Installing datamodel-aml-cpp library"
@@ -68,7 +68,11 @@ install_dependencies() {
     fi
 
     # Copy the library file
-    cd out/linux/${AML_TARGET_ARCH}/${AML_BUILD_MODE}
+    if [ "armhf-native" = ${AML_TARGET_ARCH} ]; then
+        cd out/linux/armhf/${AML_BUILD_MODE}
+    else
+        cd out/linux/${AML_TARGET_ARCH}/${AML_BUILD_MODE}
+    fi
     cp *.so ${PROJECT_ROOT}
 
     echo -e "Installation of datamodel-aml-cpp library"
