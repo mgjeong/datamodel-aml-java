@@ -40,7 +40,7 @@ public class RepresentationTest {
     String amlDataFile                 = "./src/test/resources/TEST_Data.aml";
     String dataBinaryFile              = "./src/test/resources/TEST_DataBinary";
 
-    String amlModelId                  = "GTC_Robot_0.0.1"; // from "TEST_DataModel.aml" file
+    String amlModelId                  = "SAMPLE_Robot_0.0.1"; // from "TEST_DataModel.aml" file
     
     String TestAML() throws IOException
     {
