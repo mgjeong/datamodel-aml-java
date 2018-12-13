@@ -37,13 +37,13 @@ datamodel-aml-java is a library which provides the way to present raw data(key/v
 2. export LD_LIBRARY_PATH=../..
 3. Run the sample:
     ```
-     java -jar sample-1.0.0-Release-jar-with-dependencies.jar
+     java -jar sample-0.0.1-SNAPSHOT-jar-with-dependencies.jar
     ```
 
 ## Usage guide for datamodel-aml-java library (for microservices)
 
 1. The microservice which wants to use aml APIs has to link following libraries:</br>
-    - datamodel-aml-java-1.0.0-Release-jar-with-dependencies.jar</br>
+    - datamodel-aml-java-0.0.1-SNAPSHOT-jar-with-dependencies.jar</br>
     - jniaml.so</br>
     - aml.so</br>
 2. Reference aml library APIs : [doc/index.html](doc/index.html)
